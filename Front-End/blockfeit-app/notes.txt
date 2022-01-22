@@ -1,0 +1,10 @@
+
+// add notes here, if any
+
+
+-- images folder must be in parent directory
+-- add all styles in style folder
+    e.g. for Home.js style file will be home.css 
+-- All js code will be present in component folder
+
+
