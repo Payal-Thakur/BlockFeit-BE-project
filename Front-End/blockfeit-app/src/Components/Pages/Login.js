@@ -19,9 +19,15 @@ function Login(){
                             <p class="text-muted mb-4"> <h3>Welcome to Blockfeit</h3> </p>
                             <form>
                                 <div class="mb-3">
-                                <h6> User ID</h6>
+                                <h6> Email ID</h6>
                                     <input id="inputUserid" type="userid" placeholder="" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" />
                                 </div>
+                                
+                                <div class="mb-3">
+                                <h6> Password</h6>
+                                    <input id="inputPassword" type="password" placeholder="Must be at least 6 characters" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
+                                </div>
+
                                 <div class="mb-3">
                                 <h6> User Type</h6>
                                 <select class="form-select rounded-pill border-0 shadow-sm px-4" aria-label=".form-select-sm example">
@@ -31,10 +37,6 @@ function Login(){
                                              <option value="3">Customer</option>
                                 </select>
                                     
-                                </div>
-                                <div class="mb-3">
-                                <h6> Password</h6>
-                                    <input id="inputPassword" type="password" placeholder="Must be at least 6 characters" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
                                 </div>
                 
                                 <div class="d-grid gap-2 mt-2">
