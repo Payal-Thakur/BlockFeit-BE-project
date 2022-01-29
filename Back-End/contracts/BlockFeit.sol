@@ -39,9 +39,13 @@ contract BlockFeit {
     address private manufacturer;
     string location;
     uint total_manufacturered;
-   
+    Retailer tempRetailer;
+    Customer tempCustomer;
+    Product[] tempProducts;
+    uint indx;
     Product[] manufacturered;
-    Product[] tempProduct;
+    
+    mapping(string => Product) productMapping;
     mapping(string => Customer) customers;
     mapping(string => Retailer) retailers;
 
@@ -49,6 +53,7 @@ contract BlockFeit {
 
         manufacturer = _manufacturer;
         total_manufacturered = 0;
+        indx = 0;
     }
 
       modifier restricted() {
@@ -83,7 +88,14 @@ contract BlockFeit {
             product.batch = _batch;
             product.ownwer = _owner;
 
+            productMapping[_id] = product;
             manufacturered.push(product);
+    }
+
+
+    function getProductDetail(string _id) public view returns(string memory, string memory, string memory) {
+
+        return(productMapping[_id].id, productMapping[_id].name, productMapping[_id].ownwer);
     }
 
     /*
@@ -97,63 +109,120 @@ contract BlockFeit {
         Product[] available;
     */
 
-    function sellProductsToRetailer (string memory _id, uint _quantity)  public restricted returns (string memory) {
+/*
+ struct Customer {
 
-        
-        string memory MSG = "Retailer Does not Exist";
+        string id;
+        string name;
+        string phone_no;
+        string email;
+        Product[] purchesed;
+    }
+*/
+
+    function addCustomer(string memory _id,
+                        string memory _name,
+                        string memory _phone_no,
+                        string memory _email
+                        ) public {
+
+            tempCustomer.id = _id;
+            tempCustomer.name = _name;
+            tempCustomer.phone_no = _phone_no;
+            tempCustomer.email = _email;
+            delete tempCustomer.purchesed;
+            customers[_email] = tempCustomer;
+    }
+
+
+  
+
+
+
+    string MSG = "Retailer Does not Exist";
+    function sellProductsToRetailer (string memory _id, uint _quantity)  public restricted returns(string memory) {
+      
         Retailer memory retailer = retailers[_id];
-        if(_quantity > manufacturered.length) {
+        if((_quantity+indx) > manufacturered.length) {
 
             MSG = "Insufficient products";
-            return MSG;
+            return (MSG);
         }
         else if(retailer.present == false) {
 
-            return MSG;
+            return (MSG);
         }
 
-        Product memory temp;
+        delete tempRetailer.available;
+        
+        
+        tempRetailer.id = retailer.id;
+        tempRetailer.name = retailer.name;
+        tempRetailer.phone_no = retailer.phone_no;
+        tempRetailer.email = retailer.email;
+        tempRetailer.location = retailer.location;
+        tempRetailer.present = true;
+
+        for(uint tt = 0; tt < retailer.available.length;  tt++) {
+
+            Product memory p = retailer.available[tt];
+            tempRetailer.available.push(p);
+        }
 
         for(uint i = 0; i < _quantity; i++) {
 
-            temp = manufacturered[i];
-            tempProduct.push(temp);
+            // Product memory present = retailer.available[i];
+            Product memory present = manufacturered[indx];
+            present.ownwer = _id;
+            productMapping[present.id].ownwer = _id;
+            indx++;
+            tempRetailer.available.push(present);
         }
-
-        uint size = manufacturered.length - _quantity;
-        for(uint i = 0; i < size; i++) {
-
-            manufacturered[i] =  manufacturered[i + _quantity];
-        }
-         for(uint i = 0; i < _quantity; i++) {
-
-            manufacturered.pop();
-        }
-
-        retailer.available = tempProduct;
-        retailers[_id] = retailer;
-        delete tempProduct;
-
+        retailers[_id] = tempRetailer;
         MSG = "Productes Added successfully";
         return MSG;
     }
 
-    function addRetailer(string memory _id,
+   function addRetailer(string memory _id,
                         string memory _name,
                         string memory _phone_no,
                         string memory _email,
-                        string memory _location) public restricted {
+                        string memory _location) public  restricted {
 
-            Retailer memory retailer;
 
-            retailer.id = _id;
-            retailer.name = _name;
-            retailer.phone_no = _phone_no;
-            retailer.email = _email;
-            retailer.location = _location;
-            retailer.present = true;
+            tempRetailer.id = _id;
+            tempRetailer.name = _name;
+            tempRetailer.phone_no = _phone_no;
+            tempRetailer.email = _email;
+            tempRetailer.location = _location;
+            tempRetailer.present = true;
 
-            retailers[_id] = retailer;
+            retailers[_id] = tempRetailer;
+    }
+
+
+
+
+
+    function getRetailerDetails(string memory _id) public view returns(string memory, string memory, string memory, uint) {
+
+
+        return(retailers[_id].name, retailers[_id].email, retailers[_id].location, retailers[_id].available.length);
+
+    }
+
+
+  function getOwnerOfProduct(string memory _id) public view returns(string memory, string memory) {
+
+        return(productMapping[_id].name, productMapping[_id].ownwer);
+
+    }
+
+
+    function verifyOwnership(string memory owner_id) public view returns(bool) {
+
+        return(keccak256(bytes(productMapping[owner_id].ownwer)) == keccak256(bytes(owner_id)));
+
     }
 
 
@@ -162,4 +231,9 @@ contract BlockFeit {
 
 } 
 
+/*
 
+typeError: Type struct memory is not implicitly convertible to expected type struct storage pointer.
+
+
+*/
