@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../style/Home.css';
+import{ useNavigate } from "react-router-dom";
 function Home(){
+  let navigate = useNavigate();
 return(
          
           <div className="intro-header">
@@ -14,15 +16,16 @@ return(
                             
                                 <ul className="list-inline intro-social-buttons">
                                   <li>
-                                       <a href="/"><button className="button animated bounceInUp btn btn-info btn-lg"> <span className="network-name">Log In</span></button></a>
+                                       <button className="button2 animated bounceInUp btn btn-info btn-rg" onClick= { () => {navigate ("/Login")}} style={{ float: 'left'}}> <span className="network-name">Log In</span></button>
                                   </li>
                                   
                                   <li>
-                                       <a href="/"><button className="button2 animated bounceInUp btn btn-info btn-rg"> <span className="network-name">Sign Up </span></button></a>
+                                       <button className="button2 animated bounceInUp btn btn-info btn-rg" onClick= { () => {navigate ("/Signup")}} style={{ float: 'right'}}> <span className="network-name">Sign Up </span></button>
                                   </li>
                                  
                               </ul>
-                           
+                           </div>
+                           <div>
                             <h4 className="learn animated bounceInUp">We are building blocks for products anti-counterfeiting, in that way manufacturers can use this system to provide genuine products without having to manage direct-operated stores, which can significantly reduce the cost of product quality assurance.</h4>
                        <i className="arrow animated infinite pulse fa fa-angle-down icon fa-5x"></i>    
                             

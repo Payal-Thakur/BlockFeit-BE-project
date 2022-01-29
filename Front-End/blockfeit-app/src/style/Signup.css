@@ -1,0 +1,19 @@
+.login,
+.image {
+  
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url('/src/Images/bg.png');
+  background-size: cover;
+  background-position: center center;
+  
+}
+.bg-light
+.card{ 
+  width: 40rem;
+  height: 90 rem;
+  margin-left:10%;
+  margin-right:10%;
+  
+}

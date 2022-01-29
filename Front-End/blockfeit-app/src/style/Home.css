@@ -191,10 +191,10 @@ Body
 .button2{
   margin-top: 50px;
   margin-bottom: 20px;
-  background: #F0777E;
+  background: #8d77f0;
   border: none;
   border-radius: 0%;
-  border-bottom: 6px solid #dd6c72;
+  border-bottom: 6px solid #77c4f0;;
   padding: 15px 15px 15px 15px;
   
 }
@@ -211,8 +211,8 @@ Body
 
 .button2:hover{
   margin-top: 50px;
-  background: #F0777E;
-  border-bottom: 6px solid #F0777E;
+  background: #8d77f0;
+  border-bottom: 6px solid #77c4f0;
   border-radius: 0%;
   padding: 21px 15px 15px 15px;
   
