@@ -1,0 +1,40 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url('/src/Images/bg.png');
+  background-size: cover;
+  background-position: center center;
+}
+
+.h1
+{
+    color: blueviolet;
+    font-family: "Times New Roman", Times, serif;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 250px;
+}
+
+.h4
+{
+    padding-bottom: 200px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: rgb(2, 14, 13);
+}
+
+
+.p1
+{
+    padding-left: 250px;
+    color: rgb(241, 65, 11);
+    font-family: "Times New Roman", Times, serif;
+}
+
+.p2
+{
+    color: rgb(19, 50, 228);
+    
+    
+}

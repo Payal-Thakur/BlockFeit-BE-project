@@ -1,0 +1,17 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url('/src/Images/bg.png');
+  background-size: cover;
+  background-position: center center;
+}
+
+#inputmessage
+
+    {
+        font-size: 18pt;
+        height: 100px;
+        width : 400px;
+    }
