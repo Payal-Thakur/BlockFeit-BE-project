@@ -1,0 +1,18 @@
+
+
+-- Rest API
+
+1. https://rapidapi.com/blog/how-to-use-an-api-with-javascript/
+
+2. https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm
+
+3. https://abdulrwahab.medium.com/api-architecture-best-practices-for-designing-rest-apis-bf907025f5f
+
+4. https://medium.com/@onejohi/building-a-simple-rest-api-with-nodejs-and-express-da6273ed7ca9
+
+5. https://tremitch504.medium.com/rest-api-vs-soap-vs-web-api-4f8b535c01a0
+
+
+
+
+

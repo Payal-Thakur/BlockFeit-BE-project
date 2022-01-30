@@ -6,17 +6,17 @@ let URL = process.env.GANACHE_SERVER || "HTTP://127.0.0.1:7545";
 let web3 = new Web3(new Web3.providers.HttpProvider(URL));
 let contract = new web3.eth.Contract(ABI, contractAddress);
 
-
-if(web3)
+web3.eth.getAccounts()
+.then(accounts => {
+    console.log("1st Accoount : " + accounts[0])
     console.log("Ganache connected successfully \nLocation: ", __dirname);
-else
-    console.log("Something went wrong while connection Ganache  \nLocation: ", __dirname);
-
-if(contract) 
-    console.log("Contract executed successfully \nLocation: ", __dirname)
-else 
-    console.log("Something went wrong while executing smart contract  \nLocation: ", __dirname);
-
+})
+.catch(err => {
+    
+    console.error(`Something went wrong while connection Ganache${err.message}  
+    \nLocation: , ${__dirname}
+    \n IS YOUR GANACHE OPEN?`);
+});
 
 module.exports = {
     web3,

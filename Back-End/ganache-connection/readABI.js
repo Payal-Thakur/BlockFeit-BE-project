@@ -12,7 +12,7 @@ var contractAddress = undefined;
     contractAddress = contractAddress.address;
 
     // console.log("ABI : ", contractObject);
-    // console.log("contract Address : ", contractAddress);
+    console.log("contract Address : ", contractAddress);
     if(ABI == undefined || ABI.length == 0)
         console.log("Something went wrong while reading ABI in ", __dirname)
     else

@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const { web3, contract } = require("./ganache-connection/web3Connection");
+const { web3, contract } = require("./ganache-connection/web3Config");
 const { mysqlConnection } = require("./database-connection/mysqlConfig");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
