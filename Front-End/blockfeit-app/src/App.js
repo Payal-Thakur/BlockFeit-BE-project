@@ -6,6 +6,11 @@ import About from './Components/Pages/About';
 import Contact from './Components/Pages/Contact';
 import Login from './Components/Pages/Login';
 import Signup from './Components/Pages/Signup';
+import Chome from './Components/Pages/Chome';
+import Cprofile from './Components/Pages/Cprofile';
+import Chelp from './Components/Pages/Chelp';
+
+
 
 function App() {
   return (
@@ -18,6 +23,10 @@ function App() {
                   <Route path="/Contact" element={<Contact/>} />
                   <Route path="/Login" element={<Login/>} />
                   <Route path="/Signup" element={<Signup/>} />
+                   <Route path="/Chome" element={<Chome/>} />
+                   <Route path="/Cprofile" element={<Cprofile/>} />
+                   <Route path="/Chelp" element={<Chelp/>} />
+                  
 
 
                   </Routes>
