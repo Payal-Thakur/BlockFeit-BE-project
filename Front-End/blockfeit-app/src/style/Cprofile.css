@@ -1,0 +1,64 @@
+.col-lg-8 .box
+{   
+   
+    width:300px;
+    height:30px;
+   margin-left: 400px;
+   margin-top: -0.98rem !important;
+  
+    border:1px solid black;
+   background: transparent 
+
+}
+
+
+.col-lg-4 .box
+{
+    width:200px;
+    height: 200px;
+    border:1px solid black;
+    background: transparent ;
+    margin-top: 10px;
+  
+  background-color: aquamarine;
+ 
+}
+.col-lg-4
+{
+    height: 650px;
+}
+
+.col-lg-8
+{
+    height:200px;
+    
+}
+#k1
+{
+    font-weight: bold;
+
+}
+.p1
+{
+    padding-left: 50px;
+    color: rgb(106, 26, 182);
+}
+
+#tags
+{
+    color:black;
+    margin-left: 570px ;
+    margin-top: -430px;
+    font-weight: bold;
+}
+
+#alignment
+{
+    margin-left: 700px ;
+    border:1px solid black;
+    border-collapse: collapse;
+    width: 700px;
+ 
+   
+}
+

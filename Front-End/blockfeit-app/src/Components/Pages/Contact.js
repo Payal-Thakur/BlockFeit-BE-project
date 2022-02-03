@@ -20,9 +20,10 @@ function Contact(){
                             <p class="text-muted mb-4"> <h3>Get In Touch</h3> </p>
                             <form>
 
+                             
                                <div class="mb-3">
                                 <h6> Name</h6>
-                                    <input id="inputUserid" type="userid" placeholder="" required="" autofocus="" class="form-control  border-0 shadow-sm px-4" />
+                                    <input id="inputtext" type="userid" placeholder="" required=""  class="form-control  border-0 shadow-sm px-4 " />
                                 </div>
 
                                 <div class="mb-3">
@@ -32,7 +33,7 @@ function Contact(){
                                 
                                 <div class="mb-3">
                                 <h6> Message</h6>
-                                    <input id="inputmessage" type="password" placeholder="" required=""  class="form-control  border-0 shadow-sm px-4 text-primary" />
+                                    <input id="inputmessage" type="userid" placeholder="" required=""  class="form-control  border-0 shadow-sm px-4 " />
                                 </div>
 
                                 

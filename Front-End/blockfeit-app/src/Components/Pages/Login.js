@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../style/Login.css';
+import{ useNavigate } from "react-router-dom";
 
 
 
 function Login(){
+    let navigate = useNavigate();
     return(
 <div className="maincontainer">
 <div class="container-fluid">
@@ -42,7 +44,7 @@ function Login(){
                                 </div>
                 
                                 <div class="d-grid gap-2 mt-2">
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"> Log in</button>
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" onClick= { () => {navigate ("/Chome")}} > Log in</button>
                                 </div>
                                 
                                 <div class="d-grid gap-2 mt-2">

@@ -1,29 +1,4 @@
-/*import React from "react";
-function About() {
-  return (
-    <div className="start">
-      
-    <h1> About us </h1>
-    <p>Hello , Wishes from Our Team</p>
-    <br/>
 
-    <p className="tagline  offset-lg-2 " >
-    In order to ensure the identification and trace-ability of genuine<br/>
-    products throughout the supply chain, we plan to implement a fully <br/>
-    functional block-chain application system to prevent product counterfeiting.
-    </p>
-    <br/>
-   
-    
-     
-    
-</div>
-
-
-
-  );
-}
-export default About;*/
 
 
 
