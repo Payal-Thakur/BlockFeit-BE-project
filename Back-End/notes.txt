@@ -47,3 +47,11 @@ async function AddNewAccount(address) {
 }
 
 AddNewAccount("new Account");
+
+
+
+
+
+
+/// to resolve conflicts
+git checkout --theirs
