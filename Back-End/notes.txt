@@ -55,3 +55,7 @@ AddNewAccount("new Account");
 
 /// to resolve conflicts
 git checkout --theirs
+
+
+// to resolve npm install error
+ npm install --legacy-peer-deps

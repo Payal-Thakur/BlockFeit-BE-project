@@ -7,7 +7,7 @@ const { userQueries } = require("../utilities/queries")
 
 
 
-const findCustomerByEmail = (req, res, next) => {
+const findCustomerByEmail = (req, res) => {
 
 
     const email = req.email;
@@ -24,7 +24,6 @@ const findCustomerByEmail = (req, res, next) => {
             });
         }
         req.user = result[0];
-        next();
     });
 
 
