@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../style/Mhome.css';
-import $ from 'jquery';
+
 
 function Mhome(){
   
