@@ -5,3 +5,45 @@ To convert wei into ether - web3.eth.getBalance("paste the address of the accoun
 
 To transfer ether from one account to another - web3.eth.sendTransaction({from:"paste the address of the account inside it",to:"paste the address of the account inside it",value:web3.utils.toWei("1","ether")});4
 
+
+
+//  to get data from contract
+contract.methods.val().call().then(res => {
+
+    console.log("Value from Contract : ", res);
+})
+
+//to set value in contract variables
+ async function fun () {
+
+    await contract
+        .methods
+        .setVal(190)
+        .send({from : "0x13A6B9ABaE0C991a0be790B7e0601720E55fBC85"})
+        .then( res => {
+            console.log("Resut after setting Val : "  + JSON.stringify(res));
+        })
+}
+
+fun();
+
+contract.methods.val().call().then(res => {
+
+    console.log("Value from Contract after setting: ", res) 
+});
+
+
+// to add new account and transfer some balance
+let newAccount;
+const _mainAccount = "0x13A6B9ABaE0C991a0be790B7e0601720E55fBC85";
+
+async function AddNewAccount(address) {
+
+    newAccount = await web3.eth.personal.newAccount(address)
+    console.log("newly Created Account Account: " + newAccount)
+    await web3.eth.getBalance(newAccount, (err, bal) => { console.log("Ganache balance", bal); } );
+    await web3.eth.sendTransaction({to:newAccount, from: _mainAccount, value:web3.utils.toWei("5", "ether")});
+    await web3.eth.getBalance(newAccount, (err, bal) => { console.log("Ganache balance", bal); } );
+}
+
+AddNewAccount("new Account");

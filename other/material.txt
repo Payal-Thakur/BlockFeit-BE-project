@@ -12,7 +12,10 @@
 
 5. https://tremitch504.medium.com/rest-api-vs-soap-vs-web-api-4f8b535c01a0
 
+6. web3 js documentation(how to interact with smart contract using web3 js)
+https://github.com/ChainSafe/web3.js/blob/0.20.7/DOCUMENTATION.md#web3-javascript-app-api-for-02xx
 
-
+7. JWT
+https://medium.com/@pas074bct024/login-and-registration-using-jwt-express-and-mysql-c3fcab795fb2
 
 

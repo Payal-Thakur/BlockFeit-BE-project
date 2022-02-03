@@ -156,3 +156,33 @@ CREATE TABLE IF NOT EXISTS system_logger (
 	logger_status varchar(50),
 	logger_action varchar(100)
 );
+
+
+
+
+--- add new user
+
+customer_id integer NOT NULL PRIMARY KEY,
+	customer_private_key varchar(50) NOT NULL,
+	customer_public_key varchar(50) NOT NULL,
+	customer_name varchar(30) NOT NULL,
+	customer_email varchar(50) NOT NULL,
+	customer_phone_no varchar(50),
+	customer_city varchar(30),
+	customer_state varchar(20),
+	customer_type varchar(10) check(customer_type in ("customer", "vendor", "retailer", "manufactuer")),
+	customer_purchesed_count integer default 0,
+	customer_password varchar(50) NOT NULL
+
+
+INSERT INTO customer (customer_private_key, 
+					customer_public_key, 
+					customer_name,
+					customer_email,
+					customer_phone_no,
+					customer_city,
+					customer_state,
+					customer_type,
+					customer_password
+					
+) values();

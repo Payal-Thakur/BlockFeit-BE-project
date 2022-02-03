@@ -5,10 +5,16 @@ let URL = process.env.GANACHE_SERVER || "HTTP://127.0.0.1:7545";
 
 let web3 = new Web3(new Web3.providers.HttpProvider(URL));
 let contract = new web3.eth.Contract(ABI, contractAddress);
+let defaultAccount = undefined;
+
+
+
 
 web3.eth.getAccounts()
-.then(accounts => {
-    console.log("1st Accoount : " + accounts[0])
+.then( accounts => {
+    defaultAccount = accounts[0];
+    console.log("Ganache Account : ");
+    console.log(accounts);
     console.log("Ganache connected successfully \nLocation: ", __dirname);
 })
 .catch(err => {
@@ -18,7 +24,11 @@ web3.eth.getAccounts()
     \n IS YOUR GANACHE OPEN?`);
 });
 
+
+
+
 module.exports = {
     web3,
-    contract
+    contract,
+    defaultAccount
 }
