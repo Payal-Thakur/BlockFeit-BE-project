@@ -1,0 +1,64 @@
+.card{
+    display: center;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    width: 300px;
+    height: 100px;
+    font-size: small;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: center;
+    padding : 5px;
+    margin: 20px;
+    
+  }
+
+  .bg-custom-1{
+    background-color: rgb(112, 230, 151)!important;
+  }
+
+  .bg-custom-2{
+    background-color: rgb(216, 112, 230)!important;
+  }
+
+  .bg-custom-3{
+    background-color: rgb(236, 103, 196)!important;
+  }
+
+  .custom-1{
+    
+    width: 960px;
+    height: 200px;
+    text-align: left;
+    display: inline-flex;
+    align-items: left;
+
+    
+  }
+
+  .nav-text{
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    padding : 5px;
+    margin: 20px;
+    
+  }
+
+  .custom-2{
+    
+    width: 960px;
+    height: 400px;
+    text-align: left;
+    display: inline-flex;
+    align-items: left;
+
+    
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+  }
