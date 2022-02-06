@@ -82,3 +82,9 @@ truffle compile
 ```
 truffle migrate
 ```
+
+---
+
+## Import MySQL DB
+
+- In project directory
