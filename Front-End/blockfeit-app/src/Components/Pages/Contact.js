@@ -15,26 +15,24 @@ function Contact(){
                
                 <div class="container">
                     <div class="row">
+                        
                         <div class="col-lg-10 col-xl-7 mx-auto">
                         
                             <p class="text-muted mb-4"> <h3>Get In Touch</h3> </p>
                             <form>
-
+                            <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Name</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=""/>
+</div>
                              
-                               <div class="mb-3">
-                                <h6> Name</h6>
-                                    <input id="inputtext" type="userid" placeholder="" required=""  class="form-control  border-0 shadow-sm px-4 " />
-                                </div>
-
-                                <div class="mb-3">
-                                <h6> Email ID</h6>
-                                    <input id="inputUserid" type="userid" placeholder="" required="" autofocus="" class="form-control border-0 shadow-sm px-4" />
-                                </div>
-                                
-                                <div class="mb-3">
-                                <h6> Message</h6>
-                                    <input id="inputmessage" type="userid" placeholder="" required=""  class="form-control  border-0 shadow-sm px-4 " />
-                                </div>
+                            <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder=""/>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+</div>
 
                                 
                 

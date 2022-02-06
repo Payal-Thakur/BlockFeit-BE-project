@@ -18,9 +18,10 @@
     height: 200px;
     border:1px solid black;
     background: transparent ;
-    margin-top: 10px;
+    margin-top: 0px;
   
-  background-color: aquamarine;
+  background-color:  rgb(114, 250, 121); 
+  margin-left: 20px;
  
 }
 .col-lg-4
@@ -44,21 +45,118 @@
     color: rgb(106, 26, 182);
 }
 
-#tags
+/*#tags
 {
     color:black;
     margin-left: 570px ;
-    margin-top: -430px;
+    margin-top: -300px;
     font-weight: bold;
-}
+}*/
 
 #alignment
 {
-    margin-left: 700px ;
+    margin-left: 60px ;
     border:1px solid black;
     border-collapse: collapse;
-    width: 700px;
+    width: 500px;
  
    
 }
 
+.head
+{
+  margin-top: -400px;
+  margin-left: 600px;
+}
+
+.card{
+    display: center;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    width: 300px;
+    height: 100px;
+    font-size: small;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: center;
+    padding : 5px;
+    margin: 20px;
+    
+  }
+
+  .bg-custom-1{
+    background-color: rgb(112, 230, 151)!important;
+  }
+
+  .bg-custom-2{
+    background-color: rgb(216, 112, 230)!important;
+  }
+
+  .bg-custom-3{
+    background-color: rgb(236, 103, 196)!important;
+  }
+
+  .custom-1{
+    
+    width: 700px;
+    height: 200px;
+    text-align: left;
+    display: inline-flex;
+    align-items: left;
+
+    
+  }
+
+  .nav-text{
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    padding : 5px;
+    margin: 20px;
+    
+  }
+
+  .custom-2{
+    
+    width: 960px;
+    height: 400px;
+    text-align: left;
+    display: inline-flex;
+    align-items: left;
+
+    
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+  }
+
+
+  #l1
+  {
+    margin-left: 370px;
+  }
+
+  .btn1
+  {
+    margin-left: 100px;
+    margin-top:-50px;
+    background-color: rgb(114, 250, 121); 
+    height: 50px;
+    width: 150px;
+    
+  }
+
+  .head .box{
+
+    width:700px;
+    height: 180px;
+    border:1px solid black;
+    background: transparent ;
+    margin-bottom: 100px;
+    margin-left: 10;
+
+  }

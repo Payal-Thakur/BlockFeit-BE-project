@@ -9,7 +9,9 @@ function Cprofile()
         <div class="container">
   <div class="row">
     <div class="col-lg-4 shadow-sm px-4">
-      
+
+            
+      <i  id="l1" class="fa fa-user fa-2x" aria-hidden="true"></i>
       
       <div class="box">
        </div>
@@ -19,31 +21,50 @@ function Cprofile()
        <h4> Customer</h4>
        <br></br>
 
-         <h5>Location :  Nashik</h5><br></br>
-         <h5>Email    :  abc@gmail.com</h5><br></br>
-         <h5>Contact  :  9548623217</h5><br></br>
-         <h5>Password :  123456</h5>
+       <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i><span class="nav-text">Nashik,Mah</span><br></br>
+       <i class="fa fa-envelope fa-2x" aria-hidden="true"></i><span class="nav-text">abc@gmail.com</span><br></br>
+       <i class="fa fa-phone fa-2x" aria-hidden="true"></i><span class="nav-text">+91 9564127836</span><br></br>
+       <i class="fa fa-lock fa-2x" aria-hidden="true"></i> <span class="nav-text">12351</span> <i class="fa fa-eye-slash fa-2x float-right" aria-hidden="true"></i> <br></br>
 
-        
+        <br></br>
+        <br></br>        
+
+        <button type="submit" class="btn1  mb-2  shadow-sm"> Buy Product</button>
       
 
     </div>
 
-    <div class="col-lg-8 shadow-sm px-4">
-       <h3 id ="k1"> keys</h3>
+    <div class="col-lg-8 ">
        
-       <br></br>
-       <h4 class="p1">Private Key : </h4> 
-       <div class="box">
-       </div>
-      
-       
-       
-       <h4 class="p1">Public Key   : </h4>
-       <div class="box">
-       </div>
-      
+    
+  
+  <div className="card custom-1"  >
+  
+      <div class="card-body" >
+      <i class="fa fa-key fa-2x align-middle float-left"  ></i><span class="nav-text"> Keys</span>
+        
+        <h5 class="card-text"> 
+                       <li>Public Key  <div class="btn-group">
+    <a class="btn btn-primary btn-email" href="mailto:john.doe@email.com">XSFAGGW</a>
+    <button type="button"  class="fa fa copy" data-toggle="tooltip" data-placement="bottom" data-copy="john.doe@email.com" title="Copy to clipboard">
+    <i class="fa fa-copy fa-2x align-middle float-left"  ></i> </button> </div></li> 
 
+    <br></br>
+        <li>Private Key 
+
+        <div class="btn-group">
+    <a class="btn btn-primary btn-email" href="mailto:john.doe@email.com">XSFAGGW</a>
+    <button type="button"  class="fa fa copy" data-toggle="tooltip" data-placement="bottom" data-copy="john.doe@email.com" title="Copy to clipboard">
+    <i class="fa fa-copy fa-2x align-middle float-left"  ></i></button> </div>
+          
+          
+          </li> 
+        
+        </h5>
+      </div>
+    </div>
+    
+  
     </div>
    
   </div>
@@ -52,23 +73,41 @@ function Cprofile()
    
 </div>
 
-<div>
-<h3 id="tags"> My Own Product</h3> <br></br>
+<div class="head">
+
+        
+<i class="fa fa-bars fa-2x" aria-hidden="true"></i><span class="nav-text"> My Own Product</span>
+
+<br></br>
+<br></br>
+
 <table id="alignment">
-    <tr>
-        <th>Product No</th>
-        <th>Product Details</th>
-    </tr>
-    <tr>
-        <td>
-            1
-        </td>
-        <td>sellername: ABC ,
-             Amount:600,
-             product name: shoes</td>
-    </tr>
-    
+  <tr>
+    <th>Product 1</th>
+  </tr>
+
+  <tr>
+    <td>
+
+      <ul>
+        <li> Transaction Id:</li>
+        <li> Amount:</li>
+        <li> Seller:</li>
+        <li> Location:</li>
+
+      </ul>
+    </td>
+
+
+
+  </tr>
+
 </table>
+
+
+ 
+
+
 
 
 </div>

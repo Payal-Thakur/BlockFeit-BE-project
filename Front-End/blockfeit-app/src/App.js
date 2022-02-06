@@ -19,6 +19,9 @@ import Cprofile from './Components/Pages/Cprofile';
 import Chelp from './Components/Pages/Chelp';
 
 
+import Counter from './Components/Pages/Counter';
+import Authenticated from './Components/Pages/Authenticated';
+
 
 
 function App() {
@@ -42,7 +45,10 @@ function App() {
                    <Route path="/Chome" element={<Chome/>} />
                    <Route path="/Cprofile" element={<Cprofile/>} />
                    <Route path="/Chelp" element={<Chelp/>} />
-                  
+
+                   
+                   <Route path="/Counter" element={<Counter/>} />
+                   <Route path="/Authenticated" element={<Authenticated/>} />
 
 
 
