@@ -36,8 +36,8 @@ contract BlockFeit {
     }
 
     // manufacturer Details
-    string brand;
-    string location;
+    string public brand;
+    string public location;
     uint256 total_manufacturered;
     string private manufacturer;
 
@@ -78,6 +78,18 @@ contract BlockFeit {
         manufacturer = _manufacturer;
         location = _location;
         brand = _brand;
+    }
+
+    function getManufacture()
+        public
+        view
+        returns (
+            string memory,
+            string memory,
+            string memory
+        )
+    {
+        return (manufacturer, location, brand);
     }
 
     /*

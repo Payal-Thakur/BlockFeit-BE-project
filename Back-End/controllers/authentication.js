@@ -56,23 +56,25 @@ const login = (req, res) => {
         console.log("Login Result : ", customer);
 
         if(customer.customer_password !== req.body.password) {
+            
             return res.status(400).json({
                 message: "Wrong password, please check again!"
             });
-        }else if(customer.customer_type !== req.body.type) {
+        } else if(customer.customer_type !== req.body.type) {
 
             return res.status(400).json({
                 message: "Type mismatched!"
             });
         }
 
-        const token = jwt.sign({ _id : customer.publicKey }, process.env.SECREAT);
-        res.cookie("token", token, {expire : new Date() + 7 });
+        const token = jwt.sign({ _id : customer.customer_public_key, type: "customer" }, process.env.SECREAT);
+        res.cookie("token", token, {expire : new Date() + 99999 });
 
         return res.status(200).json({
 
             message: "User Logged in successfully",
-            user: customer
+            user: customer,
+            token: token
         })
     });
 };
@@ -89,7 +91,16 @@ const signOut = (req, res) => {
 }
 
 
-const signup = (req, res) => {
+const registerCustomer = (req, res) => {
+
+
+    if(req.user) {
+
+        return res.status(400).json({
+
+            msg: "User Already exist with given email"
+        });
+    }
 
 
     const query = userQueries.addNewUser;
@@ -103,6 +114,8 @@ const signup = (req, res) => {
 	const customer_state = req.body.state;
 	const customer_type = "customer";
 	const customer_password  = req.body.password;
+
+
 
     mysqlConnection.query(query, [customer_private_key, 
         customer_public_key, 
@@ -140,14 +153,28 @@ const isSignedIn = expressJWT({
 });
 
 
+const isTokenPresent = (req, res, next) => {
+
+    if(!req.headers.authorization) {
+
+        return res.status(400).json({
+
+            message: "Token not present"
+        });
+    }
+    next();
+
+}
+
 
 module.exports = {
 
     login,
-    signup,
+    registerCustomer,
     fieldValidator,
     signOut,
-    isSignedIn
+    isSignedIn,
+    isTokenPresent
 
 }
 

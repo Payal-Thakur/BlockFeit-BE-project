@@ -1,6 +1,6 @@
 const express = require('express');
 let router = express.Router();
-const { login, signup, fieldValidator } = require("../controllers/authentication")
+const { login, registerCustomer, fieldValidator, signOut, isSignedIn, isTokenPresent } = require("../controllers/authentication")
 const { check } = require("express-validator");
 const { findCustomerByEmail } = require("../controllers/customer")
 
@@ -11,9 +11,10 @@ router.post('/login',[
         check("type", "Invalid type").isIn(['customer', 'vendor', 'manufacturer'])
     ],
     fieldValidator,
-    login);
+    login
+);
 
-router.post('/signup',[
+router.post('/register',[
 
         check("name", "Name is Required").trim(),
         check("email", "Email is Required..").isEmail(),
@@ -23,10 +24,11 @@ router.post('/signup',[
         check("password", "Password should be at least 6 chars").isLength({ min : 5})
     ],
     fieldValidator,
-    signup
+    findCustomerByEmail,
+    registerCustomer
 );
 
-
+router.post('/signout', signOut)
 
 
 

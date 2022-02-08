@@ -185,4 +185,130 @@ INSERT INTO customer (customer_private_key,
 					customer_type,
 					customer_password
 					
-) values();
+) values(?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+
+
+-- get Transactions
+
+
+select product.product_name, product_history.transaction_address, product_history.time_stamp,
+		product_history.status, product_history.amount
+from product_history, product;
+where (product_history.owner_public_key = ?) or 
+		(product_history.buyer_public_key = ?) and product_history.product_id = product.product_id;
+
+
+-- insert manufacturer
+
+manufacturer_id
+	manufacturer_private_key
+	manufacturer_public_key
+	manufacturer_name
+	manufacturer_email
+	manufacturer_product_count
+	manufacturer_mobile_no
+	manufacturer_city
+	manufacturer_state
+	manufacturer_password
+	manufacturer_company_name
+
+
+INSERT INTO manufacturer values("m-1", "prvtk-xyz", "pubk-abc", "manufactuer-1", 
+
+	"blockFeit@gmail.com", 0, "1234567890", "Nashik", "Maharashtra", "manu-pass", "Blockfeit"
+);
+
+
+
+-- Add product
+
+product_id
+product_name 
+product_description
+product_height
+product_width
+product_manufactured_date
+product_size
+product_batch
+product_owner_id 
+product_manufacturer
+
+
+
+INSERT INTO product values("p-1", "product-1", "A shoe", "23 CM", "10 CM", 
+	STR_TO_DATE('28-08-2029', '%d-%m-%Y'), 
+	"M", "2022", "owner-1", "m-1");
+
+
+
+
+-- Request for vendor
+
+
+vendor_private_key,
+vendor_public_key,
+vendor_name,
+vendor_email,
+vendor_mobile_no,
+vendor_city,
+vendor_state,
+vendor_password,
+vendor_password,
+
+insert into vendor(
+	vendor_id,
+	vendor_private_key,
+	vendor_public_key,
+	vendor_name,
+	vendor_email,
+	vendor_mobile_no,
+	vendor_city,
+	vendor_state,
+	vendor_password,
+	vendor_shop_name,
+	vendor_quantity_available,
+	vendor_quantity_sold,
+	vendor_quantity_requested
+) values ((select
+	vendor_id,
+	vendor_private_key,
+	vendor_public_key,
+	vendor_name,
+	vendor_email,
+	vendor_mobile_no,
+	vendor_city,
+	vendor_state,
+	vendor_password,
+	vendor_shop_name,  0, 0, 0
+	from vendor_requested 
+	where vendor_requested.vendor_id=1));
+
+
+
+
+insert into vendor(
+	vendor_id,
+	vendor_private_key,
+	vendor_public_key,
+	vendor_name,
+	vendor_email,
+	vendor_mobile_no,
+	vendor_city,
+	vendor_state,
+	vendor_password,
+	vendor_shop_name
+) values ((select
+	vendor_id,
+	vendor_private_key,
+	vendor_public_key,
+	vendor_name,
+	vendor_email,
+	vendor_mobile_no,
+	vendor_city,
+	vendor_state,
+	vendor_password,
+	vendor_shop_name,
+	from vendor_requested 
+	where vendor_requested.vendor_id=1));
+
