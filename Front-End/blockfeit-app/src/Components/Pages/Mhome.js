@@ -4,7 +4,9 @@ import '../../style/Mhome.css';
 
 function Mhome(){
   
-return( <div>
+return( 
+
+<div>
 
 <div class="wrapper">
     <div class="navbar">
@@ -41,6 +43,9 @@ return( <div>
 <a href="/">Profile</a>
  </div> 
    </div>
+
+
+   
 <div class="container">
 <div class="row">
   <div class="col-3">
@@ -145,10 +150,8 @@ return( <div>
 
 
 
-</div>);
-
-
-
+</div>
+);
 
 
 

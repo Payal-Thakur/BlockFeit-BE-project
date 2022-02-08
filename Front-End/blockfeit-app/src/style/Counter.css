@@ -28,3 +28,35 @@
     color: black;
 }
 
+
+.wrapper nav {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    width: 50%;
+  }
+  
+  .sign-out-wrapper {
+    margin-right: 1em;
+  }
+  
+  .sign-out {
+    color: black;
+    outline: none;
+    text-decoration: none;
+    transition: all 0.1s;
+  }
+  
+  .sign-out:focus,
+  .sign-out:hover,
+  .sign-out:active {
+    color: black;
+    background-color: rgb(49, 22, 202);
+    text-decoration: none;
+  }
+  
+  .sign-out > span {
+    margin: 0.5em;
+  }
