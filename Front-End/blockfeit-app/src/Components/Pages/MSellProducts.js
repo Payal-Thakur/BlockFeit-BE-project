@@ -1,7 +1,43 @@
 import React from 'react';
 
 function MSellProducts(){
-    return(
+    return(<div>
+
+        <div class="wrapper">
+            <div class="navbar">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid" >
+                <a class="navbar-brand" > Blockfeit</a>
+                  <form class="d-flex " >
+                
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    
+                    <div class="col-6 col-md-4 sign-out-wrapper clearfix">
+                    <a href="/Login" class="sign-out pull-right">
+                    <i class="fa fa-sign-out"></i>
+            <span>Log Out</span>
+            
+          </a>
+        </div>
+                  </form>
+                </div>
+              </nav>
+        
+            </div> 
+           </div>  
+        
+        
+          <div class="wrapper">
+            <div class="sidebar">
+        
+            <a href="/Mhome">Home</a>
+        <a href="/MAddSeller">Add Seller</a>
+        <a href="/MAddProducts">Add Products</a>
+        <a class="active" href="/MSellProducts">Sell Products</a>
+        <a href="/">Profile</a>
+         </div> 
+           </div>
    <div class="container">
        <div class="row">
             <div class="col-xs-12">
@@ -47,7 +83,7 @@ function MSellProducts(){
    </div>
      </div>
      </div>
-
+</div>
    );
 
 

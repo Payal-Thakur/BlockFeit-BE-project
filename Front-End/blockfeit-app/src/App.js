@@ -32,7 +32,7 @@ function App() {
   return (
             <BrowserRouter>
               <div> 
-                <Navbar/>
+                {/* <Navbar/> */}
                   <Routes>
                   <Route path="/" exact element={<Home />} /> 
                   <Route path="/About" exact element={<About />} />
