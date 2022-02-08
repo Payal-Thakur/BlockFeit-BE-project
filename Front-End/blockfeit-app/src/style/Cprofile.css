@@ -45,6 +45,11 @@
     color: rgb(106, 26, 182);
 }
 
+/*#h1
+{
+  font-style: normal;
+}*/
+
 /*#tags
 {
     color:black;
@@ -59,8 +64,15 @@
     border:1px solid black;
     border-collapse: collapse;
     width: 500px;
+    font-style: normal;
  
    
+}
+
+
+.head .nav-text
+{
+  font-style: normal;
 }
 
 .head
@@ -160,3 +172,5 @@
     margin-left: 10;
 
   }
+
+  

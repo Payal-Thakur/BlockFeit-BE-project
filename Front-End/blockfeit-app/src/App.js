@@ -18,6 +18,10 @@ import Chome from './Components/Pages/Chome';
 import Cprofile from './Components/Pages/Cprofile';
 import Chelp from './Components/Pages/Chelp';
 
+import Vhome from './Components/Pages/Vhome';
+import Vsell from './Components/Pages/Vsell';
+
+
 
 import Counter from './Components/Pages/Counter';
 import Authenticated from './Components/Pages/Authenticated';
@@ -45,6 +49,11 @@ function App() {
                    <Route path="/Chome" element={<Chome/>} />
                    <Route path="/Cprofile" element={<Cprofile/>} />
                    <Route path="/Chelp" element={<Chelp/>} />
+                   
+                   <Route path="/Vhome" element={<Vhome/>} />
+                   <Route path="/Vsell" element={<Vsell/>} />
+
+
 
                    
                    <Route path="/Counter" element={<Counter/>} />

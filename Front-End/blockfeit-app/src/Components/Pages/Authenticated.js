@@ -61,7 +61,8 @@ function Authenticated()
                                        Leather type: Napa Secondary color: White
                                        Sole material: Rubber 
                                        </p>
-                                       </div>     
+                                       </div>    
+                                        
                                 </div>
 
                             </div>
