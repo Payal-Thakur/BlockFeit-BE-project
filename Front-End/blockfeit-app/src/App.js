@@ -20,6 +20,8 @@ import Chelp from './Components/Pages/Chelp';
 
 import Vhome from './Components/Pages/Vhome';
 import Vsell from './Components/Pages/Vsell';
+import Vprofile from './Components/Pages/Vprofile';
+import Vtrans from './Components/Pages/Vtrans';
 
 
 
@@ -52,6 +54,8 @@ function App() {
                    
                    <Route path="/Vhome" element={<Vhome/>} />
                    <Route path="/Vsell" element={<Vsell/>} />
+                   <Route path="/Vprofile" element={<Vprofile/>} />
+                   <Route path="/Vtrans" element={<Vtrans/>} />
 
 
 

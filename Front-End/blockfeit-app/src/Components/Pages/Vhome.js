@@ -21,6 +21,7 @@ function Vhome()
             <li><a href="#">Add Customer</a></li>
             <li><a href="#">Sell</a></li>
             <li><a href="#">profile</a></li>
+            <li><a href="#">Ownership</a></li>
             <li><a href="#">help</a></li>
             
         </ul> 
@@ -71,10 +72,15 @@ function Vhome()
   <div class="form-group row">
                <label class="col-sm-2 control-label" for="id1"><b>Public Key</b></label>
                <div class="col-sm-10">
-                  <input class="form-control" type="password" id="id1" placeholder=" Public key " />
-               <div> 
-                    <i class="fa fa-eye"  id="f" ></i>
-                   </div> 
+                  <input class="form-control" type="text" id="id1" placeholder=" Public key " />
+
+                  <div class="adjust">
+                     
+                  <i class="fa fa-eye" aria-hidden="true"  ></i>
+                      </div>
+                  
+               
+                   
     </div>
                 
         </div>
@@ -82,11 +88,14 @@ function Vhome()
                <label class="col-sm-2 control-label" for="id2"><b>Private Key</b></label>
                <div class="col-sm-10">
                   
-                   <input class="form-control" type="password" id="id2" placeholder="Private Key " />
+                   <input class="form-control" type="text" id="id2" placeholder="Private Key " />
                
                    
-                    <i class="fa fa-eye" aria-hidden="true"></i>
-                    
+                   <div class="adjust">
+                     
+                     <i class="fa fa-eye" aria-hidden="true"  ></i>
+                         </div>
+                     
                
                </div>
                </div>
@@ -185,7 +194,7 @@ function Vhome()
 
        <td class="t">
            <div class="icon">
-           <i class="fa fa-arrow-error" aria-hidden="true"></i>
+           <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
            </div>
         </td>
 

@@ -90,6 +90,8 @@ function Authenticated()
                      <th>User Name</th>
                      <th>Location</th>
                  </tr>
+                 
+
              </thead>
              <tbody>
                  <tr id="t1">

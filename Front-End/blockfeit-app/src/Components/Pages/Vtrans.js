@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../style/Vsell.css';
+import '../../style/Vtrans.css';
 
-function Vsell()
+function Vtrans()
 {
     return(
         <div>
@@ -87,4 +87,4 @@ function Vsell()
 
     );
 }
-export default Vsell;
+export default Vtrans;

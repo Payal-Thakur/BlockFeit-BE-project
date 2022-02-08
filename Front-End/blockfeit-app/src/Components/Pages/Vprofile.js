@@ -1,27 +1,47 @@
 import React  from "react";
-import '../../style/Cprofile.css';
+import '../../style/Vprofile.css';
 
 
-function Cprofile()
+function Vprofile()
 {
     return (
  <div> 
+       <div class="wrapper">
+    <div class="sidebar">
+        <h2></h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Add Customer</a></li>
+            <li><a href="#">Sell</a></li>
+            <li><a href="#">profile</a></li>
+            <li><a href="#">Ownership</a></li>
+            <li><a href="#">help</a></li>
+            
+        </ul> 
+        
+    </div>
+</div>
+
+
+
+
+
         <div class="container">
   <div class="row">
-    <div class="col-lg-4 shadow-sm px-4">
+    <div class="col-lg-3 shadow-sm px-4">
 
             
-      <i  id="l1" class="fa fa-user fa-2x" aria-hidden="true"></i>
+      <i  id="l2" class="fa fa-user fa-2x" aria-hidden="true"></i>
       
       <div class="box">
        </div>
        <br></br>
 
-       <h1> Chandu Shinde</h1> 
-       <h4> Customer</h4>
+       <h1> Manasvi Mali</h1> 
+       <h4> Vendor</h4>
        <br></br>
 
-       <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i><span class="nav-text">Nashik,Mah</span><br></br>
+       <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i><span class="nav-text">Nashik,Maharashtra</span><br></br>
        <i class="fa fa-envelope fa-2x" aria-hidden="true"></i><span class="nav-text">abc@gmail.com</span><br></br>
        <i class="fa fa-phone fa-2x" aria-hidden="true"></i><span class="nav-text">+91 9564127836</span><br></br>
        <i class="fa fa-lock fa-2x" aria-hidden="true"></i> <span class="nav-text">12351</span> <i class="fa fa-eye-slash fa-2x float-right" aria-hidden="true"></i> <br></br>
@@ -29,8 +49,7 @@ function Cprofile()
         <br></br>
         <br></br>        
 
-        <button type="submit" class="btn1  mb-2  shadow-sm"> Buy Product</button>
-      
+       
 
     </div>
 
@@ -128,7 +147,7 @@ function Cprofile()
     );
 }
 
-export default Cprofile;
+export default Vprofile;
 /*import{ useNavigate } from "react-router-dom";
 function Cprofile()
 {

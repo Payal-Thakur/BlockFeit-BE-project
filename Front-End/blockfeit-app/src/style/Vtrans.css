@@ -1,0 +1,26 @@
+
+
+
+.form-group {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    padding-right:20px;
+}
+
+.col-xs-12
+
+{
+    margin-left: 100px;
+}
+
+.sidebar
+{
+
+    margin: 0;
+      padding-top: 0;
+      width: 200px;
+      background-color: #f1f1f1;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+}
