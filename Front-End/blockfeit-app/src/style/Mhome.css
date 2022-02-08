@@ -8,13 +8,14 @@
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     text-align: center;
-    padding : 5px;
-    margin: 20px;
+    padding : 0.5px;
+    margin: 5px;
     
   }
 
   .bg-custom-1{
     background-color: rgb(112, 230, 151)!important;
+    
   }
 
   .bg-custom-2{
@@ -27,14 +28,15 @@
 
   .custom-1{
     
-    width: 960px;
-    height: 200px;
+    width: 1300px;
+    height: 400px;
     text-align: left;
     display: inline-flex;
     align-items: left;
 
     
   }
+ 
 
   .nav-text{
     font-size: xx-large;
@@ -45,13 +47,13 @@
   }
 
   .custom-2{
-    
-    width: 960px;
-    height: 400px;
+    max-height: 200px;
+    width: 1300px;
     text-align: left;
     display: inline-flex;
     align-items: left;
-
+    padding : 5px;
+    margin: 20px;
     
   }
 
@@ -62,3 +64,75 @@
     margin: 0;
     vertical-align: middle;
   }
+
+  .wrapper nav {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    width: 50%;
+  }
+  
+  .sign-out-wrapper {
+    margin-right: 1em;
+  }
+  
+  .sign-out {
+    color: black;
+    outline: none;
+    text-decoration: none;
+    transition: all 0.1s;
+  }
+  
+  .sign-out:focus,
+  .sign-out:hover,
+  .sign-out:active {
+    color: black;
+    background-color: rgb(49, 22, 202);
+    text-decoration: none;
+  }
+  
+  .sign-out > span {
+    margin: 0.5em;
+  }
+  
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  /* Sidebar links */
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  /* Active/current link */
+  .sidebar a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  
+ 

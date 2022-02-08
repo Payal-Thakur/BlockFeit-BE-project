@@ -1,0 +1,30 @@
+.col-lg-4
+{
+    height: 650px;
+}
+
+.col-lg-8
+{
+    height: 650px;
+}
+
+#i1
+{
+    margin-top: 20px;
+    background:transparent;
+    width: 200px;
+    height: 200px;
+    margin-left: 90px;
+}
+#c1
+{
+    margin-left: 20px;
+   font-weight: bold;
+   font-style: normal;
+}
+#h1
+{
+    margin-left: 250px;
+    color: black;
+}
+

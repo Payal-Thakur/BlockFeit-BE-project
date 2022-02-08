@@ -1,9 +1,34 @@
 
 import React from 'react';
 import '../../style/Contact.css';
+import {Link} from 'react-router-dom';
 
 function Contact(){
-    return(
+    return( <div>
+        <nav class="navbar navbar-expand-lg navbar-white bg-dark">
+     <div class ="container-fluid">
+        <Link to="/" class="navbar-brand" > Blockfeit </Link>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <Link to="/" class="nav-link active" >Home</Link>
+        </li>
+        <li class="nav-item">
+        <Link to="/About" class="nav-link active"> About </Link>
+        </li>
+        <li class="nav-item">
+        <Link to="/Contact" class="nav-link active"> Contact </Link>
+        </li>
+    
+      </ul>
+     
+    </div>
+  </div>
+</nav>
 <div className="maincontainer">
 <div class="container-fluid">
     <div class="row no-gutter">
@@ -15,26 +40,24 @@ function Contact(){
                
                 <div class="container">
                     <div class="row">
+                        
                         <div class="col-lg-10 col-xl-7 mx-auto">
                         
                             <p class="text-muted mb-4"> <h3>Get In Touch</h3> </p>
                             <form>
-
+                            <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Name</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=""/>
+</div>
                              
-                               <div class="mb-3">
-                                <h6> Name</h6>
-                                    <input id="inputtext" type="userid" placeholder="" required=""  class="form-control  border-0 shadow-sm px-4 " />
-                                </div>
-
-                                <div class="mb-3">
-                                <h6> Email ID</h6>
-                                    <input id="inputUserid" type="userid" placeholder="" required="" autofocus="" class="form-control border-0 shadow-sm px-4" />
-                                </div>
-                                
-                                <div class="mb-3">
-                                <h6> Message</h6>
-                                    <input id="inputmessage" type="userid" placeholder="" required=""  class="form-control  border-0 shadow-sm px-4 " />
-                                </div>
+                            <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder=""/>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+</div>
 
                                 
                 
@@ -53,7 +76,7 @@ function Contact(){
     </div>
 </div>
 </div>
-
+</div>
 );
 }
 

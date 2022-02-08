@@ -1,0 +1,63 @@
+#i1
+{
+    margin-top: 20px;
+    background:transparent;
+    width: 200px;
+    height: 200px;
+    margin-left: 90px;
+}
+
+#c4
+{
+    margin-left: 20px;
+   font-weight: bold;
+   font-style: normal;
+   
+}
+.pro
+{
+    margin-left: 70px;
+}
+
+#m1
+{
+    margin-left: 60px;
+    color: rgb(11, 121, 11);
+}
+
+.pro1
+{
+    margin-left: 70px;
+}
+
+
+.pd
+{
+    margin-top: 40px;
+}
+
+.col-lg-8
+{
+    height: 650px;
+}
+
+#head
+{
+    color:black;
+    margin-left: 700px ;
+    margin-top: -340px;
+    font-weight: normal;
+}
+.align
+{
+    margin-left: 650px;
+    border:1px solid black;
+    border-collapse: collapse;
+    width: 700px;
+ 
+}
+
+#t1
+{
+    position: center;
+}

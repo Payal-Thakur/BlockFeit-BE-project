@@ -18,6 +18,15 @@ import Chome from './Components/Pages/Chome';
 import Cprofile from './Components/Pages/Cprofile';
 import Chelp from './Components/Pages/Chelp';
 
+import Vhome from './Components/Pages/Vhome';
+import Vsell from './Components/Pages/Vsell';
+import Vprofile from './Components/Pages/Vprofile';
+import Vtrans from './Components/Pages/Vtrans';
+
+
+
+import Counter from './Components/Pages/Counter';
+import Authenticated from './Components/Pages/Authenticated';
 
 
 
@@ -25,7 +34,7 @@ function App() {
   return (
             <BrowserRouter>
               <div> 
-                <Navbar/>
+                {/* <Navbar/> */}
                   <Routes>
                   <Route path="/" exact element={<Home />} /> 
                   <Route path="/About" exact element={<About />} />
@@ -42,7 +51,17 @@ function App() {
                    <Route path="/Chome" element={<Chome/>} />
                    <Route path="/Cprofile" element={<Cprofile/>} />
                    <Route path="/Chelp" element={<Chelp/>} />
-                  
+                   
+                   <Route path="/Vhome" element={<Vhome/>} />
+                   <Route path="/Vsell" element={<Vsell/>} />
+                   <Route path="/Vprofile" element={<Vprofile/>} />
+                   <Route path="/Vtrans" element={<Vtrans/>} />
+
+
+
+                   
+                   <Route path="/Counter" element={<Counter/>} />
+                   <Route path="/Authenticated" element={<Authenticated/>} />
 
 
 
