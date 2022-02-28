@@ -28,7 +28,7 @@ const productQueries = {
     product_owner_id 
     product_manufacturer*/
 
-    addProduct : ` INSERT INTO product values( ?, ?, ?, ?, ?, STR_TO_DATE(?, '%d-%m-%Y'),  ?, ?, ?, ?);`
+    addProduct : ` INSERT INTO product values( ?, ?, ?, ?, ?, STR_TO_DATE(?, '%d-%m-%Y'),  ?, ?, ?);`
 };
 
 
@@ -58,6 +58,16 @@ const vendorQueries = {
             vendor_password,
             vendor_shop_name ) values(?, ?, ?, ?, ?, ?, ?, ?, ?);`,
 
+    getVendorById : `Select * from vendor where vendor_id = ?;`,
+    approveVendor : `call approve_vendor(?);`,
+
+    productRequestedByVendor: `select vendor_id, vendor_name, vendor_public_key, vendor_quantity_requested, vendor_quantity_available ,vendor_quantity_sold from vendor where vendor_quantity_requested > 0;`,
+    requestProductToManufacturer : `update vendor 
+                                    set vendor_quantity_requested = vendor_quantity_requested + ? 
+                                    where vendor_id = ?;`,
+
+    sellProductToCustomer : `call UPDATE_VENDOR_PRODUCT_STATUS(?, ?)`
+
 
 }
 
@@ -67,6 +77,7 @@ const manufacturerQueries = {
     getAllReports: `select * from report`,
 
 } 
+
 
 
 module.exports = {

@@ -6,21 +6,46 @@ function Vprofile()
 {
     return (
  <div> 
-       <div class="wrapper">
-    <div class="sidebar">
-        <h2></h2>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Add Customer</a></li>
-            <li><a href="#">Sell</a></li>
-            <li><a href="#">profile</a></li>
-            <li><a href="#">Ownership</a></li>
-            <li><a href="#">help</a></li>
-            
-        </ul> 
+
+<div class="wrapper">
+    <div class="navbar">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid" >
+        <a class="navbar-brand" > Blockfeit</a>
+          <form class="d-flex " >
         
-    </div>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+            
+            <div class="col-6 col-md-4 sign-out-wrapper clearfix">
+            <a href="/Login" class="sign-out pull-right">
+            <i class="fa fa-sign-out"></i>
+    <span>Log Out</span>
+    
+  </a>
 </div>
+          </form>
+        </div>
+      </nav>
+
+    </div> 
+   </div> 
+
+
+
+
+
+
+   <div class="wrapper">
+    <div class="sidebar">
+
+    <a  href="/Vhome">Home</a>
+<a href="/Signup">Add Customer</a>
+<a href="/Vsell">Sell Product</a>
+<a class="active" href="/Vprofile">Profile</a>
+<a href="/Vtrans">Ownership</a>
+ </div> 
+   </div>
 
 
 
@@ -37,7 +62,7 @@ function Vprofile()
        </div>
        <br></br>
 
-       <h1> Manasvi Mali</h1> 
+       <h1> Chandrakant Shinde</h1> 
        <h4> Vendor</h4>
        <br></br>
 
@@ -115,7 +140,7 @@ function Vprofile()
                      <th>Product No</th>
                      <th>Transaction Id</th>
                      <th>Amount</th>
-                     <th>Seller</th>
+                     <th>Customer</th>
                      <th>Location</th>
 
                  </tr>

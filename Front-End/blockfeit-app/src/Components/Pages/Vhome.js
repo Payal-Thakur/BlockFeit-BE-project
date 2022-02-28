@@ -1,5 +1,3 @@
-
-
 import { TableBody } from '@material-ui/core';
 
 import React from 'react';
@@ -13,21 +11,50 @@ function Vhome()
     return(
         <div>
 
-<div class="wrapper">
-    <div class="sidebar">
-        <h2></h2>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Add Customer</a></li>
-            <li><a href="#">Sell</a></li>
-            <li><a href="#">profile</a></li>
-            <li><a href="#">Ownership</a></li>
-            <li><a href="#">help</a></li>
-            
-        </ul> 
+
+
+               <div class="wrapper">
+    <div class="navbar">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid" >
+        <a class="navbar-brand" > Blockfeit</a>
+          <form class="d-flex " >
         
-    </div>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+            
+            <div class="col-6 col-md-4 sign-out-wrapper clearfix">
+            <a href="/Login" class="sign-out pull-right">
+            <i class="fa fa-sign-out"></i>
+    <span>Log Out</span>
+    
+  </a>
 </div>
+          </form>
+        </div>
+      </nav>
+
+    </div> 
+   </div> 
+
+
+
+
+   <div class="wrapper">
+    <div class="sidebar">
+
+    <a class="active" href="#home">Home</a>
+<a href="/Signup">Add Customer</a>
+<a href="/Vsell">Sell Product</a>
+<a href="/Vprofile">Profile</a>
+<a href="/Vtrans">Ownership</a>
+ </div> 
+   </div>
+
+
+
+
+
 
 <div class="container">
 <div class="row">
@@ -225,3 +252,4 @@ function Vhome()
     );
     }
 export default Vhome;
+

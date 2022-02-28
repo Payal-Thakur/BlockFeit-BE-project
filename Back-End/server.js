@@ -4,9 +4,8 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.LOCALHOST_SERVER_PORT || 3000;
+const PORT = process.env.LOCALHOST_SERVER_PORT || 7000;
 
-require("./contract-controllers/contractUtilities");
 
 // export routes
 const authenticationRoutes = require("./routes/authentication")
@@ -23,12 +22,14 @@ app.use(cookieParser());
 app.use(cors());
 
 
+
 // routes
 app.use("/api", authenticationRoutes);
 app.use("/api", customerRoutes);
 app.use("/api", productRoutes);
 app.use("/api", vendorRoutes);
 app.use("/api", manufacturerRoutes);
+
 
 
 app.listen(PORT, () => {

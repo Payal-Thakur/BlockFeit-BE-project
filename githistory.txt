@@ -1,0 +1,39 @@
+688256f Merge branch 'main' of https://github.com/Payal-Thakur/BlockFeit-BE-project
+71246fc backend updated
+76b0c01 Merge branch 'main' of https://github.com/Payal-Thakur/BlockFeit-BE-project
+0d088fb vendor profile is done
+04e906a Manufacturer navbar sidebar added to all pages
+fbe47d8 vendor home and vendor sell product page is created
+d75502b Authenticate ,counterfeit, customer profile is created
+16c0cf8 Authenticate ,counterfeit, customer profile is created
+4317f6f signin and signup routes added
+d1e9f21 Android Added
+d283b2b Android added
+cd014fb jquery
+8549a69 Manufacturer ui created
+6d75baf Manufacturer Pages updated
+6049889 customer page created
+9431ef9 Customer home and profile page is created
+ec5feea DB added in other folder
+4339393 folder created
+6ce32bc backend setup done
+07f5458 About us contact us page updated
+b030ffc Contract Done
+f58cd3f Merge branch 'main' of https://github.com/Payal-Thakur/BlockFeit-BE-project
+974a21e Contract updated
+84258a5 Sign up page created
+c160d96 Log in page created & linked to log in button
+fe82a32 manufacturer features added in contract
+acca0f6 Backend steup
+4433155 notes.txt updated
+15618e7 structure modified
+320851c Front end updated
+5864c77 Initial commit
+585d2c7 Add files via upload
+74c5607 Create 1.js
+9ef3115 Add files via upload
+4a8eab7 Add files via upload
+bbb065c Update README.md
+2d85314 Create Smart Contract
+09133a4 Create UI Design
+9cc1493 Initial commit
