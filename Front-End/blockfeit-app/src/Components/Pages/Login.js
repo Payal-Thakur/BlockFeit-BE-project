@@ -74,7 +74,7 @@ function Login(){
                                 </div>
                                 
                                 <div class="d-grid gap-2 mt-2">
-                                    <h6> Don't have an account? Sign up </h6>
+                                    <h6> Don't have an account? <Link to="/Signup" > Sign up </Link> </h6>
                                 </div>
 
                                 <div class="d-grid gap-2 mt-2">

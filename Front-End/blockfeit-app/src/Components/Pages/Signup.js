@@ -79,7 +79,7 @@ function Signup(){
                                 </div>
                                 
                                 <div class="d-grid gap-2 mt-2">
-                                    <h6> Already have an account? Sign In </h6>
+                                    <h6> Already have an account? <Link to="/Login" > Log in </Link> </h6>
                                 </div>
 
                       
