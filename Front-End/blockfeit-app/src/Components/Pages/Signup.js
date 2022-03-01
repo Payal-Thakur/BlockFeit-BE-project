@@ -38,7 +38,7 @@ function Signup(){
         <div class="col-md-6 bg-light">
             <div class="login d-flex align-items-center py-5">
                
-                <div class="card" >
+            <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-xl-7 mx-auto">
                         
