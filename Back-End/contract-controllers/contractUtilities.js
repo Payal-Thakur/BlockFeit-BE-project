@@ -1,29 +1,18 @@
+const { json } = require("body-parser");
 const {   web3,
     contract,
     defaultAccount
 } = require("../ganache-connection/web3Config");
 
-const retailer = {
+const DEFAULT_ACCOUNT = "0x729d40954040cA2CD715e875bc74C2fD810bD64B";
+const GAS = "6721975";
+const GAS_PRICE = "30000000";
 
-    id: "ret-1",
-    name: "Test Retailer",
-    phone_no: "1234566",
-    email : "BlockFeit",
-    location : "Nashik"
-};
 
-const product = {
+const { generateKeys } = require("../utilities/keyGeneration")
 
-    id: "product-1",
-    name: "Product name",
-    width: "23 cm",
-    height: "13 cm",
-    time_stamp: "2-8-2022",
-    batch: "2022",
-    owner: "original manu"
-}
 
-async function addManufacturerIntoContact () {
+async function addManufacturerIntoContactBCN () {
 
     await contract
         .methods
@@ -39,184 +28,395 @@ async function addManufacturerIntoContact () {
         });
 }
 
-const addRetailer = async (retailer) => {
+const addRetailerBCN = (req, res) => {
 
-    await contract
+
+    const {  vendor_id,
+        vendor_name,
+        vendor_mobile_no,
+        vendor_email,
+        vendor_city
+       } = req.vendor;
+
+     contract
         .methods
-        .addRetailer(retailer.id,
-            retailer.name,
-            retailer.phone_no, 
-            retailer.email, 
-            retailer.location)
+        .addRetailer(
+            vendor_id,
+            vendor_name,
+            vendor_mobile_no,
+            vendor_email,
+            vendor_city)
         .send({from : "0x729d40954040cA2CD715e875bc74C2fD810bD64B", gas: 6721975, gasPrice: '30000000'})
-        .then( res => {
-            console.log(`Resut after Adding Retailer : `  + JSON.stringify(res));
+        .then( result => {
+
+
+            result.logsBloom = undefined;
+            return res.status(200).json({
+
+                message: "Retailer Added Successfully",
+                Result : result,
+                vendor_id: vendor_id
+            });
         });
 }
 
-// addRetailer(retailer);
 
-const addCustomer = async (customer) => {
+const addCustomerBCN = (req, res) => {
 
-    await contract
+    const {
+        customer_name,
+        customer_email,
+        customer_phone_no
+    } = req.body;
+
+    const {customer_publicKey, 
+        customer_privateKey } = req;
+
+        console.log(`Private key : ${customer_privateKey}, Public key : ${customer_publicKey}`)
+
+    contract
     .methods
-    .addCustomer(customer.id,
-        customer.name,
-        customer.phone_no, 
-        customer.email)
-    .send({from : "0x729d40954040cA2CD715e875bc74C2fD810bD64B", gas: 6721975, gasPrice: '30000000'})
-    .then( res => {
-        console.log("Resut after Adding Customer : "  + JSON.stringify(res));
+    .addCustomer(customer_publicKey,
+        customer_name,
+        customer_phone_no,
+        customer_email)
+    .send({from : DEFAULT_ACCOUNT, gas: 6721975, gasPrice: '30000000'})
+    .then( result => {
+        return res.status(200).json({
+
+            DB_MSG : req.DB_MSG,
+            bc_message: "Customer Added Successfully",
+            bc_esult : result,
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+           
+            message: "Someting went wrong while",
+            error: err
+        });
     });
 }
 
-const sellProductsToRetailer = async (seller_id, quantity) => {
+const sellProductsToRetailerBCN = async (req, res) => {
+
+    const { seller_id, quantity } = req.body;
 
     await contract
     .methods
     .sellProductsToRetailer(seller_id, quantity)
-    .send({from : "0x729d40954040cA2CD715e875bc74C2fD810bD64B", gas: 6721975, gasPrice: '30000000'})
-    .then( res => {
-        console.log(`Resut after selling product to retailer :Seller id: ${seller_id}, Quantity : ${quantity} `  + JSON.stringify(res));
+    .send({from : DEFAULT_ACCOUNT, gas: GAS, gasPrice: GAS_PRICE})
+    .then( result => {
+    
+        return res.status(200).json({
+
+            message : `Product sold Successfully to Retailer, id : ${seller_id}, quantity : ${quantity}`,
+            result: result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message : `Something Went wrong while sending products to Retailer, id : ${seller_id}, quantity : ${quantity}`,
+            error: err
+        });
+
     });
 
 }
 
 // sellProductsToRetailer(retailer.id, 1);
 
-const sellProductToCustomer = async (seller_id, customer_id) => {
+const sellProductToCustomerBCN = async (req, res) => {
+
+
+    const { vendor_id, customer_public_key } = req.body;
 
     await contract
     .methods
-    .sellProductToCustomer(seller_id, customer_id)
-    .send({from : "0x729d40954040cA2CD715e875bc74C2fD810bD64B", gas: 6721975, gasPrice: '30000000'})
-    .then( res => {
-        console.log(`Resut after selling product to customer :Seller id: ${seller_id}, customer : ${customer_id} `  + JSON.stringify(res));
+    .sellProductToCustomer(vendor_id, customer_public_key)
+    .send({from : DEFAULT_ACCOUNT, gas: GAS, gasPrice: GAS_PRICE})
+    .then( result => {
+        
+        return res.status(200).json({
+
+            message: `Product sent successfully, V -> C, From ${vendor_id} to ${customer_public_key }`,
+            result : result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message: `Something went wrong while selling V -> C, From ${seller_id} to ${customer_id }`,
+            err : err
+        });
     });
 }
 
 
-const addProduct = async (product) => {
+const addProductBCN = (req, res) => {
 
-    await contract
+    
+    const id = req.product_key;
+    const {
+        product_name,
+        product_width,
+        product_height,
+        product_manufactured_date,
+        product_batch ,
+        product_owner_id } = req.body;
+
+    contract
     .methods
-    .addProduct(product.id,
-        product.name,
-        product.width,
-        product.height,
-        product.time_stamp,
-        product.batch,
-        product.owner)
-    .send({from : "0x729d40954040cA2CD715e875bc74C2fD810bD64B", gas: 6721975, gasPrice: '30000000'})
-    .then( res => {
-        console.log(`Resut after Adding Product: ${product} : \n`  + JSON.stringify(res));
+    .addProduct(id,
+        product_name,
+        product_width,
+        product_height,
+        product_manufactured_date,
+        product_batch,
+        product_owner_id)
+    .send({from : DEFAULT_ACCOUNT, gas: GAS, gasPrice: GAS_PRICE})
+    .then( result => {
+
+        result.logsBloom = undefined;
+        return res.status(200).json({
+
+            db_result : req.DB_RES,
+            bc_result : {
+                message: "Product Added Successfully",
+                Result : result,
+                _id: id
+            }
+        });
+    })
+    .catch(err => {
+        return res.status(400).json({
+
+            message: "Something went wrong while adding Product",
+            error: err,
+        });
     });
 }
 
-// addProduct(product);
 
-const getProductDetail = async (product_id) => {
+const getProductDetailBCN = async (req, res) => {
+
+    const { product_id } = req.body;
     await contract
     .methods
     .getProductDetail(product_id)
     .call()
-    .then( res => {
-        console.log(`getting product Detail for ${product_id} : `  + JSON.stringify(res));
+    .then( result => {
+        return res.status(200).json({
+
+            message: "Recived Prodct Successfully",
+            result : result
+        });
+    })
+    .catch(err => {
+
+        return res.status(200).json({
+
+            message: "Someting went wrong while getting product details",
+            error: err
+        });
     });
 }
 
-getProductDetail(product.id);
+// getProductDetail(product.id);
 
 
-const getRetailerProductCount = async (retailer_id) => {
+const getRetailerProductCountBCN = async (req, res) => {
+
+
+    const { retailer_id } = req.body;
 
     await contract
     .methods
     .getRetailerProductCount(retailer_id)
     .call()
-    .then( res => {
-        console.log(`getRetailerProductCount for ${retailer_id} : `  + JSON.stringify(res));
+    .then( result => {
+       
+        return res.status(200).json({
+
+            message : `Retrived Vendor Detail Successfully, V_ID: ${retailer_id}`,
+            result: result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message : `Something went wrong while getting Vendor Detail V_id: ${retailer_id}`,
+            error : err
+        });
+
     });
 
 }
 
 // getRetailerProductCount(retailer.id);
 
-const getCustomerProductCount = async (customer_id) => {
+const getCustomerProductCountBCN = async (req, res) => {
+
+    const { customer_id } = req.body;
 
     await contract
     .methods
     .getCustomerProductCount(customer_id)
     .call()
-    .then( res => {
-        console.log(`getCustomerProductCount for ${customer_id} : `  + JSON.stringify(res));
+    .then( result => {
+       
+        return res.status(200).json({
+
+            message : `Retrived Customer Product count Successfully, C_ID: ${ customer_id }`,
+            result: result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message : `Something went wrong while getting Customer Product count C_id: ${ customer_id }`,
+            error : err
+        });
+
     });
 }
 
 
-const getManufacturerCount = async () => {
+const getManufacturerCountBCN = async () => {
 
     await contract
     .methods
     .getManufacturerCount()
     .call()
-    .then( res => {
-        console.log(`Total Manufacturer product Count  : `  + JSON.stringify(res));
+    .then(result => {
+       
+        return res.status(200).json({
+
+            message : `Retrived Manufacturer Product count Successfully`,
+            result: result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message : `Something went wrong while getting Manufacturer Product count`,
+            error : err
+        });
+
     });
 }
 
 // getManufacturerCount();
 
-const getRetailerDetails = async (id) => {
+const getRetailerDetailsBCN = async (req, res) => {
 
-    await contract.methods.getRetailerDetails(id).call().then(res => {
-        console.log(`Retailer Info for id: ${id}: `, res) 
-    });
+    const { id } = req.body;
+
+    await contract
+        .methods
+        .getRetailerDetails(id)
+        .call()
+        .then( result => {
+       
+            return res.status(200).json({
+    
+                message : `Retrived Vendor Details Successfully, V_ID: ${ id }`,
+                result: result
+            });
+        })
+        .catch(err => {
+    
+            return res.status(400).json({
+    
+                message : `Something went wrong while getting  Vendor Details Detail V_id: ${ id }`,
+                error : err
+            });
+        });
 }
 
 // getRetailerDetails(retailer.id);
 
 
-const getOwnerOfProduct = async (product_id) => {
+const getOwnerOfProductBCN = async (req, res) => {
+
+    const { product_id } = req.body;
 
     await contract
     .methods
     .getOwnerOfProduct(product_id)
     .call()
-    .then( res => {
-        console.log(`Owner of Product ${product_id} : `  + JSON.stringify(res));
+    .then( result => {
+       
+        return res.status(200).json({
+
+            message : `Retrived owner of Product Successfully, P_Id: ${ product_id }`,
+            result: result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message : `Something went wrong while Retrived owner of Product  P_id: ${ product_id }`,
+            error : err
+        });
+
     });
 }
 
-getOwnerOfProduct(product.id);
+// getOwnerOfProduct(product.id);
 
-const verifyOwnership = async (product_id, owner_id) => {
+const verifyOwnershipBCN = async (req, res) => {
+
+    const { product_id, owner_id } = req.body;
 
     await contract
     .methods
     .verifyOwnership(product_id, owner_id)
     .call()
-    .then( res => {
-        console.log(`verifyOwnership of product id : ${product_id}, owner_id : ${owner_id}`  + JSON.stringify(res));
+    .then( result => {
+       
+        return res.status(200).json({
+
+            message : `Recived Verification Data Successfully, P_ID: ${product_id}, O_ID: ${ owner_id }`,
+            result: result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message : `Something went wrong while verifying Data, P_ID: ${product_id}, O_ID: ${ owner_id }`,
+            error : err
+        });
+
     });
 }
 
 
 module.exports = {
 
-    addManufacturerIntoContact,
-    addRetailer,
-    addCustomer,
-    sellProductsToRetailer,
-    sellProductToCustomer,
-    addProduct,
-    getProductDetail,
-    getRetailerProductCount,
-    getCustomerProductCount,
-    getManufacturerCount,
-    getRetailerDetails,
-    getOwnerOfProduct,
-    verifyOwnership
+    addManufacturerIntoContactBCN,
+    addRetailerBCN,
+    addCustomerBCN,
+    sellProductsToRetailerBCN,
+    sellProductToCustomerBCN,
+    addProductBCN,
+    getProductDetailBCN,
+    getRetailerProductCountBCN,
+    getCustomerProductCountBCN,
+    getManufacturerCountBCN,
+    getRetailerDetailsBCN,
+    getOwnerOfProductBCN,
+    verifyOwnershipBCN
 }
 
 

@@ -1,14 +1,16 @@
 const { mysqlConnection } = require("../database-connection/mysqlConfig")
 const { productQueries } = require("../utilities/queries")
+const { generateKeys } = require("../utilities/keyGeneration");
 
 
 
 
 
-const addProduct = (req, res) => {
+const addProduct = (req, res, next) => {
 
 
-    const { product_id,
+    const { publicKey } = generateKeys();
+    const {
         product_name ,
         product_description,
         product_height,
@@ -19,9 +21,14 @@ const addProduct = (req, res) => {
         product_owner_id ,
         product_manufacturer } = req.body;
 
+        req.product_key = publicKey;
+
     const query = productQueries.addProduct;
 
-    mysqlConnection.query(query, [product_id,
+    console.log("Got Body : " + req.body);
+
+    mysqlConnection.query(query, [
+        publicKey,
         product_name ,
         product_description,
         product_height,
@@ -29,7 +36,6 @@ const addProduct = (req, res) => {
         product_manufactured_date,
         product_size,
         product_batch,
-        product_owner_id ,
         product_manufacturer], (err, result, fields) => {
 
             if(!!err) {
@@ -41,12 +47,12 @@ const addProduct = (req, res) => {
                 });
             }
 
-            return res.status(200).json({
+            req.DB_RES = {
 
-                message : " Product added successfully "
-            });
-
-
+                message : " Product added successfully ",
+                "product key" : publicKey
+            }
+            next();
     });
 
 

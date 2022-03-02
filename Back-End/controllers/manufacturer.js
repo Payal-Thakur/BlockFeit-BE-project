@@ -1,5 +1,5 @@
 const { mysqlConnection } = require("../database-connection/mysqlConfig")
-const { manufacturerQueries } = require("../utilities/queries");
+const { manufacturerQueries, vendorQueries } = require("../utilities/queries");
 
 
 const requestedVendor = (req, res) => {
@@ -54,13 +54,67 @@ const getAllReports = (req, res) => {
         });
 
     });
+}
+
+const approveVendorRequest = (req, res, next) => {
+
+    const { vendor_id } = req.body;
+    const query = vendorQueries.approveVendor;
+
+    mysqlConnection.query(query, [ vendor_id ], (error, result, fields) => {
+
+        if(!!error) {
+
+            return res.status(400).json({
+
+                message: `Something went while approving Vedor, Public key ${vendor_public_key}`,
+                error: error
+            });
+        }
+
+
+        next();
+    });
+}
+
+
+const productRequestedVenodr = (req, res) => {
+
+    const query = vendorQueries.productRequestedByVendor;
+
+    mysqlConnection.query(query, (error, result, message) => {
+
+        if(!!error) {
+
+            return res.status(400).json({
+
+                message: `Something went while getting product requests`,
+                error: error
+            });
+        }
+
+        return res.status(200).json({
+
+            message: "Successfully retrived all Requested Retailers!!",
+            result : result
+        });
+
+
+    });
+
+
 
 }
+
+
+
 
 
 module.exports = {
 
     requestedVendor,
-    getAllReports
-    
+    approveVendorRequest,
+    getAllReports,
+    productRequestedVenodr
+
 }

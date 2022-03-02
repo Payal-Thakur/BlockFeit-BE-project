@@ -38,7 +38,7 @@ function Signup(){
         <div class="col-md-6 bg-light">
             <div class="login d-flex align-items-center py-5">
                
-                <div class="card" >
+            <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-xl-7 mx-auto">
                         
@@ -79,7 +79,7 @@ function Signup(){
                                 </div>
                                 
                                 <div class="d-grid gap-2 mt-2">
-                                    <h6> Already have an account? Sign In </h6>
+                                    <h6> Already have an account? <Link to="/Login" > Log in </Link> </h6>
                                 </div>
 
                       

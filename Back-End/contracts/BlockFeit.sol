@@ -186,11 +186,15 @@ contract BlockFeit {
     function sellProductToCustomer(
         string memory _seller_id,
         string memory _customer_id
-    ) public {
+    ) public returns (uint256) {
         delete tempRetailer.available;
         tempRetailer = retailers[_seller_id];
+
+        if (tempRetailer.present == false) return (0);
+
         delete tempCustomer.purchesed;
         tempCustomer = customers[_customer_id];
+
         tempProduct = tempRetailer.available[0];
 
         for (uint256 i = 0; i < tempRetailer.available.length - 1; i++) {
@@ -201,6 +205,8 @@ contract BlockFeit {
         retailers[_seller_id] = tempRetailer;
         productMapping[tempProduct.id].ownwer = _customer_id;
         customers[_customer_id].purchesed.push(tempProduct);
+
+        return 1;
     }
 
     /*

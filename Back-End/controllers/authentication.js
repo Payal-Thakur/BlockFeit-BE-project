@@ -1,10 +1,11 @@
 require('dotenv').config();
 const { validationResult } = require("express-validator");
-const { publicKey, privateKey } = require("../utilities/keyGeneration");
+const { generateKeys } = require("../utilities/keyGeneration");
 const { mysqlConnection } = require("../database-connection/mysqlConfig");
 const { userQueries } = require("../utilities/queries");
 const jwt = require('jsonwebtoken');
 const expressJWT = require("express-jwt");
+const { json } = require('body-parser');
 
 
 
@@ -60,6 +61,7 @@ const login = (req, res) => {
             return res.status(400).json({
                 message: "Wrong password, please check again!"
             });
+
         } else if(customer.customer_type !== req.body.type) {
 
             return res.status(400).json({
@@ -91,7 +93,7 @@ const signOut = (req, res) => {
 }
 
 
-const registerCustomer = (req, res) => {
+const registerCustomer = (req, res, next) => {
 
 
     if(req.user) {
@@ -102,23 +104,34 @@ const registerCustomer = (req, res) => {
         });
     }
 
-
     const query = userQueries.addNewUser;
 
-    const customer_private_key = publicKey(); 
-	const customer_public_key = privateKey();
-	const customer_name = req.body.name;
-	const customer_email = req.body.email;
-	const customer_phone_no = req.body.phone_no;
-	const customer_city = req.body.city;
-	const customer_state = req.body.state;
+    const { privateKey, publicKey } = generateKeys();
 	const customer_type = "customer";
-	const customer_password  = req.body.password;
 
 
+    req.customer_publicKey = publicKey;
+    req.customer_privateKey = privateKey;
 
-    mysqlConnection.query(query, [customer_private_key, 
-        customer_public_key, 
+    const {
+        
+        customer_name,
+        customer_email,
+        customer_phone_no,
+        customer_city,
+        customer_state,
+        customer_password
+    } = req.body;
+
+    const { customer_publicKey, 
+        customer_privateKey } = req;
+
+    
+    console.log(`Private key : ${customer_privateKey}, Public key : ${customer_publicKey}`)
+
+    mysqlConnection.query(query, [
+        customer_privateKey, 
+        customer_publicKey, 
         customer_name,
         customer_email,
         customer_phone_no,
@@ -136,13 +149,18 @@ const registerCustomer = (req, res) => {
             }
 
             console.log("New user Added into DB");
-            console.table(fields);
 
-            return res.status(200).json({
+            req.DB_MSG = {
 
-                message: "New user Added Successfully",
-                result : result
-            });
+                db_message: "New user Added Successfully",
+                db_result : result,
+                Keys : {
+                    privateKey : privateKey,
+                    publicKey : publicKey
+                }
+            }
+
+            next();
         });
 }
 

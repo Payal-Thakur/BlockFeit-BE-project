@@ -270,7 +270,7 @@ insert into vendor(
 	vendor_quantity_available,
 	vendor_quantity_sold,
 	vendor_quantity_requested
-) values ((select
+) (select
 	vendor_id,
 	vendor_private_key,
 	vendor_public_key,
@@ -282,23 +282,61 @@ insert into vendor(
 	vendor_password,
 	vendor_shop_name,  0, 0, 0
 	from vendor_requested 
-	where vendor_requested.vendor_id=1));
+	where vendor_requested.vendor_id=1);
+
+
+
+-- triggers to update Vendor count in manufacturer
+
+
+CREATE TRIGGER update_vendor_count_on_add
+AFTER INSERT ON vendor FOR EACH ROW 
+BEGIN
+UPDATE manufacturer SET manufacturer.manufacturer_vendor_count = manufacturer.manufacturer_vendor_count+1;
+END
+
+
+CREATE TRIGGER update_vendor_count_on_delete
+AFTER DELETE ON vendor FOR EACH ROW 
+BEGIN
+UPDATE manufacturer SET manufacturer_vendor_count = manufacturer_vendor_count-1;
+END
+
+-- product count after adding product in DB
+
+CREATE TRIGGER update_product_count_on_add
+AFTER INSERT ON product FOR EACH ROW 
+BEGIN
+UPDATE manufacturer SET manufacturer_product_count = manufacturer_product_count+1;
+END
+
+
+
+-- Approve vendor
+
+CREATE PROCEDURE UPDATE_VENDOR_PRODUCT_STATUS (IN _venodr_id integer,
+		IN _customer_public_key integer)
+BEGIN
+
+	update vendor
+	SET  vendor_quantity_available =  vendor_quantity_available - 1,
+	vendor_quantity_sold = vendor_quantity_sold + 1
+	where vendor_id = _venodr_id;
+
+	update customer
+	SET customer_purchesed_count = customer_purchesed_count + 1;
+	where customer_public_key = _customer_public_key;
+
+END
 
 
 
 
-insert into vendor(
-	vendor_id,
-	vendor_private_key,
-	vendor_public_key,
-	vendor_name,
-	vendor_email,
-	vendor_mobile_no,
-	vendor_city,
-	vendor_state,
-	vendor_password,
-	vendor_shop_name
-) values ((select
+
+CREATE PROCEDURE approve_vendor (IN vendor_id_to_approve integer)
+BEGIN
+	
+	insert into vendor(
 	vendor_id,
 	vendor_private_key,
 	vendor_public_key,
@@ -309,6 +347,53 @@ insert into vendor(
 	vendor_state,
 	vendor_password,
 	vendor_shop_name,
-	from vendor_requested 
-	where vendor_requested.vendor_id=1));
+	vendor_quantity_available,
+	vendor_quantity_sold,
+	vendor_quantity_requested
+	) (select
+		vendor_id,
+		vendor_private_key,
+		vendor_public_key,
+		vendor_name,
+		vendor_email,
+		vendor_mobile_no,
+		vendor_city,
+		vendor_state,
+		vendor_password,
+		vendor_shop_name,  0, 0, 0
+		from vendor_requested 
+		where vendor_requested.vendor_id=vendor_id_to_approve);
+
+	DELETE from vendor_requested where vendor_id = vendor_id_to_approve;
+END
+
+
+-- to use this procedure pass vendor ID to it
+-- call approve_vendor(1);
+
+
+
+select vendor_id, vendor_name, vendor_public_key, vendor_quantity_requested, vendor_quantity_available ,vendor_quantity_sold
+from vendor
+where vendor_quantity_requested > 0;
+
+
+
+-- requestProductTomanu
+
+
+update vendor 
+set vendor_quantity_requested = vendor_quantity_requested + ? 
+where vendor_id = ?;
+
+
+
+
+
+
+
+
+
+
+
 
