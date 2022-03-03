@@ -35,6 +35,7 @@ function MSellProducts(){
         <a href="/MAddSeller">Add Seller</a>
         <a href="/MAddProducts">Add Products</a>
         <a class="active" href="/MSellProducts">Sell Products</a>
+        <a href="/QRcode">Generate QR </a>
         <a href="/">Profile</a>
          </div> 
            </div>

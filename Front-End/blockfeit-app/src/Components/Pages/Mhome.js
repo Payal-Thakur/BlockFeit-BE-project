@@ -40,6 +40,7 @@ return(
 <a href="/MAddSeller">Add Seller</a>
 <a href="/MAddProducts">Add Products</a>
 <a href="/MSellProducts">Sell Products</a>
+<a href="/QRcode">Generate QR </a>
 <a href="/">Profile</a>
  </div> 
    </div>

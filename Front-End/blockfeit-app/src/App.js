@@ -13,10 +13,13 @@ import MAddSeller from './Components/Pages/MAddSeller';
 import MAddProducts from './Components/Pages/MAddProducts';
 import MSellProducts from './Components/Pages/MSellProducts';
 import Mhome from './Components/Pages/Mhome';
+import QRcode from './Components/Pages/QRcode';
+
 
 import Chome from './Components/Pages/Chome';
 import Cprofile from './Components/Pages/Cprofile';
 import Chelp from './Components/Pages/Chelp';
+import Scanned from './Components/Pages/Scanned';
 
 import Vhome from './Components/Pages/Vhome';
 import Vsell from './Components/Pages/Vsell';
@@ -50,9 +53,12 @@ function App() {
                   <Route path="/MSellProducts" element={<MSellProducts/>} />
                   <Route path="/Mnavbar" element={<Mnavbar/>} />
                   <Route path="/Msidebar" element={<Msidebar/>} />
+                  <Route path="/QRcode" element={<QRcode/>} />
+
                    <Route path="/Chome" element={<Chome/>} />
                    <Route path="/Cprofile" element={<Cprofile/>} />
                    <Route path="/Chelp" element={<Chelp/>} />
+                   <Route path="/Scanned" element={<Scanned/>} />
                    
                    <Route path="/Vhome" element={<Vhome/>} />
                    <Route path="/Vsell" element={<Vsell/>} />
