@@ -54,12 +54,12 @@ return(
   <div class="wrapper">
     <div class="sidebar">
 
-    <a class="active" href="#home">Home</a>
+    <a  href="/Mhome">Home</a>
 <a href="/MAddSeller">Add Seller</a>
 <a href="/MAddProducts">Add Products</a>
 <a href="/MSellProducts">Sell Products</a>
-<a href="/QRcode">Generate QR </a>
-<a href="/">Profile</a>
+<a  class="active" href="/QRcode">Generate QR </a>
+
  </div> 
    </div>
 
@@ -69,7 +69,7 @@ return(
               <CardContent>
                   <Grid container spacing={112}>
                       <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
-                          <TextField label="Enter Product_id Here" onChange={(e) => setText(e.target.value)}/>
+                          <TextField label="Enter Product ID Here" onChange={(e) => setText(e.target.value)}/>
                           <Button className={classes.btn} variant="contained" 
                             color="primary" onClick={() => generateQrCode()}>Generate</Button>
                             <br/>
@@ -94,7 +94,7 @@ return(
 }
 const useStyles = makeStyles((theme) => ({
     conatiner: {
-      marginTop: 10
+      marginLeft:200
     },
     title: {
       display: 'flex',
@@ -107,6 +107,8 @@ const useStyles = makeStyles((theme) => ({
     btn : {
       marginTop: 10,
       marginBottom: 20,
+      marginLeft: 50,
+      fontSize:20
      
     }
 }));

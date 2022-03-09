@@ -37,7 +37,7 @@ function MAddProducts(){
         <a class="active" href="/MAddProducts">Add Products</a>
         <a href="/MSellProducts">Sell Products</a>
         <a href="/QRcode">Generate QR </a>
-        <a href="/">Profile</a>
+        
          </div> 
            </div>
    <div class="container">

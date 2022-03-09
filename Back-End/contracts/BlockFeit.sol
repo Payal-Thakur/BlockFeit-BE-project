@@ -121,8 +121,13 @@ contract BlockFeit {
     }
 
         */
+<<<<<<< HEAD
         /*
         _tempRetailer.id = _id;
+=======
+
+        /*_tempRetailer.id = _id;
+>>>>>>> 2d70e22761e29f7fb5d8c5e0adb9f42bbe057a03
         _tempRetailer.name = _name;
         _tempRetailer.phone_no = _phone_no;
         _tempRetailer.email = _email;

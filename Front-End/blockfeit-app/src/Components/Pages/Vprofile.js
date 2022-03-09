@@ -129,7 +129,7 @@ function Vprofile()
 
   <div class="tab1"> 
 
-<i class="fa fa-bars fa-2x"></i><span class="nav-text"> My Own Product</span>
+<i class="fa fa-bars fa-2x"></i><span class="nav-text3"> My Sold Product</span>
    </div>
    <br></br>
             

@@ -2,7 +2,7 @@ import React from 'react';
 
 function MAddSeller(){
 
-  
+
 
 
 
@@ -22,7 +22,7 @@ function MAddSeller(){
                     <a href="/Login" class="sign-out pull-right">
                     <i class="fa fa-sign-out"></i>
             <span>Log Out</span>
-            
+  
           </a>
         </div>
                   </form>
