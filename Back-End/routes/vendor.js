@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require("express-validator");
 const { vendorRegistration, requestProductToManufacturer, sellProductToCustomer } = require("../controllers/vendor");
 const { fieldValidator } = require("../controllers/authentication");
-const { sellProductToCustomerBCN } = require("../contract-controllers/contractUtilities")
+const { sellProductToCustomerBCN, getRetailerDetailsBCN } = require("../contract-controllers/contractUtilities")
 
 
 router.post('/vendorregistration', [
@@ -23,5 +23,6 @@ router.post('/vendorregistration', [
 router.post("/requestProductToManufacturer", requestProductToManufacturer);
 router.post("/sellProductToCustomer", sellProductToCustomer, sellProductToCustomerBCN);
 
+router.get("/vendorDetail", getRetailerDetailsBCN);
 
 module.exports = router;

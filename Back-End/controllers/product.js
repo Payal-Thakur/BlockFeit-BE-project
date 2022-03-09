@@ -54,9 +54,8 @@ const addProduct = (req, res, next) => {
             }
             next();
     });
-
-
 }
+
 
 module.exports = {
 

@@ -315,7 +315,7 @@ END
 -- Approve vendor
 
 CREATE PROCEDURE UPDATE_VENDOR_PRODUCT_STATUS (IN _venodr_id integer,
-		IN _customer_public_key integer)
+		IN _customer_public_key varchar(50))
 BEGIN
 
 	update vendor
@@ -324,7 +324,7 @@ BEGIN
 	where vendor_id = _venodr_id;
 
 	update customer
-	SET customer_purchesed_count = customer_purchesed_count + 1;
+	SET customer_purchesed_count = customer_purchesed_count + 1
 	where customer_public_key = _customer_public_key;
 
 END
@@ -381,7 +381,6 @@ where vendor_quantity_requested > 0;
 
 -- requestProductTomanu
 
-
 update vendor 
 set vendor_quantity_requested = vendor_quantity_requested + ? 
 where vendor_id = ?;
@@ -389,8 +388,18 @@ where vendor_id = ?;
 
 
 
+CREATE PROCEDURE sell_product_to_vendor(IN _cst_id varchar(30), IN _v_id integer)
+BEGIN
+	
+	UPDATE customer
+	SET customer_purchesed_count = customer_purchesed_count+1
+	WHERE customer_public_key = _cst_id;
 
-
+	UPDATE vendor
+	SET vendor_quantity_sold = vendor_quantity_sold + 1,
+		vendor_quantity_available = vendor_quantity_available - 1
+	where vendor_id = _v_id;
+END
 
 
 

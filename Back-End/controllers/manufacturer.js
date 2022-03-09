@@ -67,7 +67,7 @@ const approveVendorRequest = (req, res, next) => {
 
             return res.status(400).json({
 
-                message: `Something went while approving Vedor, Public key ${vendor_public_key}`,
+                message: `Something went while approving Vedor, Vendor ID${vendor_public_key}`,
                 error: error
             });
         }
@@ -108,6 +108,26 @@ const productRequestedVenodr = (req, res) => {
 
 
 
+const sellProuctToVendor = (req, res, next) => {
+
+    const {quantity, vendor_id} = req.body;
+    const query = manufacturerQueries.sellProductToVendor;
+    mysqlConnection.query(query, [quantity, vendor_id], (error, result)=> {
+
+        if(!!error) {
+
+            return res.status(400).json({
+
+                message: `Something went while selling products to vendor : ${vendor_id}`,
+                error: error
+            });
+        }
+
+        next();
+
+    });
+    
+}
 
 
 module.exports = {
@@ -115,6 +135,7 @@ module.exports = {
     requestedVendor,
     approveVendorRequest,
     getAllReports,
-    productRequestedVenodr
+    productRequestedVenodr,
+    sellProuctToVendor
 
 }

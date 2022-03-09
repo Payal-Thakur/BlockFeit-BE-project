@@ -13,7 +13,7 @@ let defaultAccount = undefined;
 web3.eth.getAccounts()
 .then( accounts => {
     defaultAccount = accounts[0];
-    console.log("Ganache connected successfully \nLocation: ", __dirname);
+    console.info("Ganache connected successfully");
 })
 .catch(err => {
     

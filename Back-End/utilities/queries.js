@@ -75,8 +75,8 @@ const manufacturerQueries = {
 
     getAllRequestedVendors : `select * from vendor_requested;`,
     getAllReports: `select * from report`,
-
-} 
+    sellProductToVendor: `call sell_product_to_vendor(?, ?);`
+}
 
 
 

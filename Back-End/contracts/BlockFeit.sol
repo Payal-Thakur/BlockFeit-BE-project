@@ -104,13 +104,32 @@ contract BlockFeit {
         string memory _email,
         string memory _location
     ) public {
-        tempRetailer.id = _id;
-        tempRetailer.name = _name;
-        tempRetailer.phone_no = _phone_no;
-        tempRetailer.email = _email;
-        tempRetailer.location = _location;
-        tempRetailer.present = true;
-        retailers[_id] = tempRetailer;
+        Retailer memory _tempRetailer;
+        //Product memory product;
+
+        /*
+    struct Retailer {
+        string id;
+        string name;
+        string phone_no;
+        string email;
+        string location;
+        uint256 remaining;
+        uint256 sold;
+        Product[] available;
+        bool present;
+    }
+
+        */
+
+        _tempRetailer.id = _id;
+        _tempRetailer.name = _name;
+        _tempRetailer.phone_no = _phone_no;
+        _tempRetailer.email = _email;
+        _tempRetailer.location = _location;
+        _tempRetailer.present = true;
+        _tempRetailer.sold = 0;
+        retailers[_id] = _tempRetailer;
     }
 
     /*
@@ -359,7 +378,8 @@ contract BlockFeit {
         view
         returns (bool)
     {
-        return (keccak256(bytes(productMapping[product_id].ownwer)) ==
-            keccak256(bytes(owner_id)));
+        string memory owner = productMapping[product_id].ownwer;
+        return (keccak256(abi.encodePacked((owner))) ==
+            keccak256(abi.encodePacked((owner_id))));
     }
 }

@@ -38,14 +38,15 @@ const addRetailerBCN = (req, res) => {
         vendor_city
        } = req.vendor;
 
+       console.log(`BCN Retailer : ${JSON.stringify(req.vendor)}`)
      contract
         .methods
         .addRetailer(
-            vendor_id,
-            vendor_name,
-            vendor_mobile_no,
-            vendor_email,
-            vendor_city)
+            "vendor_id",
+            "vendor_name",
+            "vendor_mobile_no",
+            "vendor_email",
+            "vendor_city")
         .send({from : "0x729d40954040cA2CD715e875bc74C2fD810bD64B", gas: 6721975, gasPrice: '30000000'})
         .then( result => {
 
@@ -102,17 +103,17 @@ const addCustomerBCN = (req, res) => {
 
 const sellProductsToRetailerBCN = async (req, res) => {
 
-    const { seller_id, quantity } = req.body;
+    const { vendor_id, quantity } = req.body;
 
     await contract
     .methods
-    .sellProductsToRetailer(seller_id, quantity)
+    .sellProductsToRetailer(vendor_id, quantity)
     .send({from : DEFAULT_ACCOUNT, gas: GAS, gasPrice: GAS_PRICE})
     .then( result => {
     
         return res.status(200).json({
 
-            message : `Product sold Successfully to Retailer, id : ${seller_id}, quantity : ${quantity}`,
+            message : `Product sold Successfully to Retailer, id : ${vendor_id}, quantity : ${quantity}`,
             result: result
         });
     })
@@ -120,7 +121,7 @@ const sellProductsToRetailerBCN = async (req, res) => {
 
         return res.status(400).json({
 
-            message : `Something Went wrong while sending products to Retailer, id : ${seller_id}, quantity : ${quantity}`,
+            message : `Something Went wrong while sending products to Retailer, id : ${vendor_id}, quantity : ${quantity}`,
             error: err
         });
 
