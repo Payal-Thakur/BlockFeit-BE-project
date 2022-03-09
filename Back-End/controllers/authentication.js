@@ -96,6 +96,8 @@ const signOut = (req, res) => {
 const registerCustomer = (req, res, next) => {
 
 
+
+    // console.log("hittig reg Router" + req.body)
     if(req.user) {
 
         return res.status(400).json({

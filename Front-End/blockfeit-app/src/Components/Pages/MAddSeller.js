@@ -1,6 +1,11 @@
 import React from 'react';
 
 function MAddSeller(){
+
+  
+
+
+
     return(<div>
 
         <div class="wrapper">

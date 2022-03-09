@@ -8,7 +8,7 @@ const { getVendorByVendorID } = require("../controllers/vendor");
 
 
 
-router.get('/requestedvendor', isTokenPresent, isSignedIn, requestedVendor);
+router.get('/requestedvendor', requestedVendor);
 router.get('/reports', getAllReports);
 
 // approved Vendor Request;

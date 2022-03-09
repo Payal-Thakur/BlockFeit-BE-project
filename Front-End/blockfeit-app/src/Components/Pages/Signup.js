@@ -1,9 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../style/Signup.css';
 import {Link} from 'react-router-dom';
-
+import axios from "axios"
 
 function Signup(){
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password , setPassword] = useState("");
+    const [confirmPassword , setConfirmPassword] = useState("");
+    const [phone_no, setPhoneNo] = useState("");
+
+
+    function registerUser(event) {
+
+        event.preventDefault();
+          
+        axios.post('http://localhost:7000/api/register', {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: {
+                'customer_name': name,
+                'customer_email': email,
+                'customer_phone_no': phone_no,
+                'customer_city': 'Nashik',
+                'customer_state': 'Maharashtra',
+                'customer_password': password 
+            }
+        })
+        .then(res => {
+
+            console.log("User registered Successfully : ", JSON.stringify(res.data))
+            return res.data;
+        })
+        .catch(err => {
+            console.log("Something went wrong while registration \n Error : " + err)
+        });
+
+
+    }
+
+
     return( <div>
         <nav class="navbar navbar-expand-lg navbar-white bg-dark">
      <div class ="container-fluid">
@@ -46,15 +84,47 @@ function Signup(){
                             <form>
                                 <div class="mb-3">
                                 <h6> Email ID</h6>
-                                    <input id="inputEmailid" type="emailid" placeholder="" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                    <input id="inputEmailid"
+                                    type="emailid" 
+                                    placeholder=""
+                                    required={true} 
+                                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                                    value={email}
+                                    onChange = { (e) => {
+                                        setEmail(e.target.value)
+                                    }}
+                                    />
                                 </div>
                                 <div class="mb-3">
                                 <h6> Name </h6>
-                                    <input id="inputName" type="name" placeholder="" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                    <input 
+                                        id="inputName"
+                                        type="name"
+                                        placeholder=""
+                                        required={true}
+                                        class="form-control rounded-pill border-0 shadow-sm px-4"
+                                        
+                                        value={name}
+                                        onChange = { (e) => {
+                                            setName(e.target.value)
+                                        }}
+
+                                        />
                                 </div>
                                 <div>
                                 <h6> Mobile Number </h6>
-                                    <input id="inputPhonenumber" type="phoneno" placeholder="" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                    <input id="inputPhonenumber" 
+                                    type="phoneno" 
+                                    placeholder="" 
+                                    required={true}
+                                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                                    value={phone_no}
+                                    onChange = { (e) => {
+                                        setPhoneNo(e.target.value)
+                                    }}
+
+                                    
+                                    />
                                 </div>
                                 <div class="mb-3">
                                 <h6> User Type</h6>
@@ -68,14 +138,37 @@ function Signup(){
                                 </div>
                                 <div class="mb-3">
                                 <h6> Password</h6>
-                                    <input id="inputPassword" type="password" placeholder="Must be at least 6 characters" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
+                                    <input id="inputPassword" 
+                                    type="password" 
+                                    placeholder="Must be at least 6 characters" 
+                                    required={true}
+                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                                    value={password}
+                                    onChange = { (e) => {
+                                        setPassword(e.target.value)
+                                    }}
+
+                                    />
                                 </div>
                                 <div class="mb-3">
                                 <h6> Confirm Password</h6>
-                                    <input id="inputPassword" type="password" placeholder="Re-enter your password" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
+                                    <input id="inputPassword" 
+                                    type="password" 
+                                    placeholder="Re-enter your password" 
+                                    required={true} 
+                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                                    value={confirmPassword}
+                                    onChange = { (e) => {
+                                        setConfirmPassword(e.target.value)
+                                    }}
+
+                                    />
                                 </div>
                                 <div class="d-grid gap-2 mt-2">
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"> Sign Up </button>
+                                <button type="submit"
+                                class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                                onClick={ registerUser }
+                                > Sign Up </button>
                                 </div>
                                 
                                 <div class="d-grid gap-2 mt-2">

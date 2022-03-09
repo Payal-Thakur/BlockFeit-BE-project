@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../style/Login.css';
 import {Link} from 'react-router-dom';
+import axios from "axios"
 
 import{ useNavigate } from "react-router-dom";
 
@@ -8,6 +9,39 @@ import{ useNavigate } from "react-router-dom";
 
 function Login(){
     let navigate = useNavigate();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [type, setType] = useState("Select ....");
+
+    
+    function loginUser(event) {
+
+        event.preventDefault();
+        axios.post('http://localhost:7000/api/login', {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },            
+            body: {
+                'username': email,
+                'password': password,
+                'type': type 
+            }
+        })
+        .then(res => {
+
+            navigate ("/Chome")
+            console.log("User Logged in Successfully : ", JSON.stringify(res.data))
+            return res.data;
+        })
+        .catch(err => {
+            console.log("Something went wrong while log in \n Error : " + err)
+            navigate ("/register")
+        });
+    
+    }
+
+
     return(<div>
         <nav class="navbar navbar-expand-lg navbar-white bg-dark">
      <div class ="container-fluid">
@@ -50,17 +84,42 @@ function Login(){
                             <form>
                                 <div class="mb-3">
                                 <h6> Email ID</h6>
-                                    <input id="inputUserid" type="userid" placeholder="" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                    <input 
+                                    id="inputUserid" 
+                                    type="userid" 
+                                    required={true}
+                                    onChange = { e => {
+
+                                        setEmail(e.target.value);
+                                    }}
+                                    class="form-control rounded-pill border-0 shadow-sm px-4" />
                                 </div>
                                 
                                 <div class="mb-3">
                                 <h6> Password</h6>
-                                    <input id="inputPassword" type="password" placeholder="Must be at least 6 characters" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
+                                    <input 
+                                    id="inputPassword" 
+                                    type="password" 
+                                    placeholder="Must be at least 6 characters"
+                                     required={true} 
+                                     value = { password }
+                                     onChange = { (e) => {
+
+                                        setPassword(e.target.value);
+                                     } }
+                                     class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
                                 </div>
 
                                 <div class="mb-3">
                                 <h6> User Type</h6>
-                                <select class="form-select rounded-pill border-0 shadow-sm px-4" aria-label=".form-select-sm example">
+                                <select 
+                                class="form-select rounded-pill border-0 shadow-sm px-4"
+                                aria-label=".form-select-sm example"
+                                onChange = {(e) => {
+
+                                    setType(e.target.value)
+                                }}
+                                >
                                              <option selected>Select...</option>
                                              <option value="1">Manufacturer</option>
                                              <option value="2">Vendor</option>
@@ -70,7 +129,9 @@ function Login(){
                                 </div>
                 
                                 <div class="d-grid gap-2 mt-2">
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" onClick= { () => {navigate ("/Chome")}} > Log in</button>
+                                <button type="submit" 
+                                    onClick = {loginUser}
+                                    class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"> Log in</button>
                                 </div>
                                 
                                 <div class="d-grid gap-2 mt-2">

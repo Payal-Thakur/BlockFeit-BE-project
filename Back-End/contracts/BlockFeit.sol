@@ -121,7 +121,7 @@ contract BlockFeit {
     }
 
         */
-
+        /*
         _tempRetailer.id = _id;
         _tempRetailer.name = _name;
         _tempRetailer.phone_no = _phone_no;
@@ -129,7 +129,7 @@ contract BlockFeit {
         _tempRetailer.location = _location;
         _tempRetailer.present = true;
         _tempRetailer.sold = 0;
-        retailers[_id] = _tempRetailer;
+        retailers[_id] = _tempRetailer;*/
     }
 
     /*
