@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import '../../style/Login.css';
 import {Link} from 'react-router-dom';
-import axios from "axios"
-
 import{ useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure();
+
+
 
 
 
@@ -18,25 +21,43 @@ function Login(){
     function loginUser(event) {
 
         event.preventDefault();
-        axios.post('http://localhost:7000/api/login', {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },            
-            body: {
-                'username': email,
+
+        fetch('http://localhost:7000/api/login', {
+            method: "POST",
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },           
+            body: JSON.stringify({
+                'email': email,
                 'password': password,
                 'type': type 
-            }
+            })
         })
+        .then(res => res.json())
         .then(res => {
 
-            navigate ("/Chome")
-            console.log("User Logged in Successfully : ", JSON.stringify(res.data))
-            return res.data;
+            console.log("User Loggin response : ", JSON.stringify(res))
+
+            if(res.error !== undefined) {
+
+                toast.error(res.error[0])
+                return;
+            }else if(res.user === undefined) {
+                
+                
+                toast.warning('User dosent exist, check credentials')
+                return;
+            }
+
+            localStorage.setItem("blockFeit", JSON.stringify(res.user));
+            localStorage.setItem("blockFeitToken", JSON.stringify(res.token));
+            toast.success("Logged in successfully")
+            navigate ("/CProfile")
         })
         .catch(err => {
             console.log("Something went wrong while log in \n Error : " + err)
-            navigate ("/register")
+           toast.error("Server is Down :(")
         });
     
     }
@@ -123,7 +144,7 @@ function Login(){
                                              <option selected>Select...</option>
                                              <option value="1">Manufacturer</option>
                                              <option value="2">Vendor</option>
-                                             <option value="3">Customer</option>
+                                             <option value="customer" >Customer</option>
                                 </select>
                                     
                                 </div>

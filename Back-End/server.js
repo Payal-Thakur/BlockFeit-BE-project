@@ -13,6 +13,7 @@ const customerRoutes = require("./routes/customer");
 const productRoutes = require("./routes/product");
 const vendorRoutes = require("./routes/vendor");
 const manufacturerRoutes = require("./routes/manufacturer");
+const { json } = require("express/lib/response");
 
 
 // middlewares
@@ -30,6 +31,7 @@ app.use("/api", customerRoutes);
 app.use("/api", productRoutes);
 app.use("/api", vendorRoutes);
 app.use("/api", manufacturerRoutes);
+
 
 
 
