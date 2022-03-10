@@ -2,6 +2,8 @@ import React from 'react';
 import '../../style/About.css';
 import {Link} from 'react-router-dom';
 
+import img10 from "../../Images/bg.png";
+
 function About(){
     return( <div>
 
@@ -33,7 +35,10 @@ function About(){
 <div class="container-fluid">
     <div class="row no-gutter">
        
-        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <div class="col-md-6 d-none d-md-flex ">
+        <img id="k1" src={img10}  alt=""/>
+          
+          </div>
         
         <div class="col-md-6 bg-light">
             <div class="login d-flex align-items-center py-8">

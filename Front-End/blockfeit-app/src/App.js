@@ -17,9 +17,9 @@ import QRcode from './Components/Pages/QRcode';
 
 
 
-import Chome from './Components/Pages/Chome';
+
 import Cprofile from './Components/Pages/Cprofile';
-import Chelp from './Components/Pages/Chelp';
+
 import Scanned from './Components/Pages/Scanned';
 
 import Vhome from './Components/Pages/Vhome';
@@ -57,9 +57,9 @@ function App() {
                   <Route path="/QRcode" element={<QRcode/>} />
                   
 
-                   <Route path="/Chome" element={<Chome/>} />
+                   
                    <Route path="/Cprofile" element={<Cprofile/>} />
-                   <Route path="/Chelp" element={<Chelp/>} />
+                   
                    <Route path="/Scanned" element={<Scanned/>} />
                    
                    <Route path="/Vhome" element={<Vhome/>} />

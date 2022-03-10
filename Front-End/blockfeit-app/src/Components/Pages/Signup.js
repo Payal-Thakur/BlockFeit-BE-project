@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../style/Signup.css';
 import {Link} from 'react-router-dom';
 import axios from "axios"
+import img10 from "../../Images/bg.png";
 
 function Signup(){
 
@@ -71,7 +72,9 @@ function Signup(){
 <div class="container-fluid">
     <div class="row no-gutter">
        
-        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <div class="col-md-6 d-none d-md-flex">
+        <img id="k1" src={img10}  alt=""/>
+            </div>
         
         <div class="col-md-6 bg-light">
             <div class="login d-flex align-items-center py-5">

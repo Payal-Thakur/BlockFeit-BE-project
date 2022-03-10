@@ -46,7 +46,10 @@ function Authenticated()
         <div class="container">
             <div class="row">
                    <div class="col-lg-4 shadow-sm px-4">
-                   <img id="i1" src={img2}  alt=""/><br></br> 
+                   <img id="i1" src={img2}  alt=""/>
+                   
+                   
+                   <br></br> 
                    <br>
                    </br>
 
