@@ -79,10 +79,17 @@ const manufacturerQueries = {
 }
 
 
+const contactUs = {
+
+    getValues: 'select * from contact',
+    insertValues: 'insert into contact(name, email, details) values (?, ?, ?)'
+}
+
 
 module.exports = {
     userQueries,
     productQueries,
     vendorQueries,
-    manufacturerQueries
+    manufacturerQueries,
+    contactUs
 }
