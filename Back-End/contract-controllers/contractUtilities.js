@@ -42,11 +42,11 @@ const addRetailerBCN = (req, res) => {
      contract
         .methods
         .addRetailer(
-            "vendor_id",
-            "vendor_name",
-            "vendor_mobile_no",
-            "vendor_email",
-            "vendor_city")
+            vendor_id,
+        vendor_name,
+        vendor_mobile_no,
+        vendor_email,
+        vendor_city)
         .send({from : "0x729d40954040cA2CD715e875bc74C2fD810bD64B", gas: 6721975, gasPrice: '30000000'})
         .then( result => {
 
@@ -73,7 +73,7 @@ const addCustomerBCN = (req, res) => {
     const {customer_publicKey, 
         customer_privateKey } = req;
 
-        console.log(`Private key : ${customer_privateKey}, Public key : ${customer_publicKey}`)
+        console.log(`BC Level : Private key : ${customer_privateKey}, Public key : ${customer_publicKey}`)
 
     contract
     .methods
@@ -92,7 +92,7 @@ const addCustomerBCN = (req, res) => {
     })
     .catch(err => {
 
-        return res.status(400).json({
+        return res.status(401).json({
 
            
             message: "Someting went wrong while",
@@ -402,6 +402,32 @@ const verifyOwnershipBCN = async (req, res) => {
     });
 }
 
+const getCustomerByDetailsBCN = (req, res) => {
+
+    const {cust_id} = req.body;
+    contract
+    .methods
+    .getCustomerDetail(cust_id)
+    .call()
+    .then( result => {
+       
+        return res.status(200).json({
+
+            message : `Recived customer Data Successfully, C_ID: ${cust_id}`,
+            result: result
+        });
+    })
+    .catch(err => {
+
+        return res.status(400).json({
+
+            message : `Something went wrong while customer Data Successfully, C_ID: ${cust_id}`,
+            error : err
+        });
+
+    });
+}
+
 
 module.exports = {
 
@@ -417,7 +443,8 @@ module.exports = {
     getManufacturerCountBCN,
     getRetailerDetailsBCN,
     getOwnerOfProductBCN,
-    verifyOwnershipBCN
+    verifyOwnershipBCN,
+    getCustomerByDetailsBCN
 }
 
 

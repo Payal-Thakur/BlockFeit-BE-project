@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../../style/Signup.css';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate } from 'react-router-dom';
 import axios from "axios"
-import img10 from "../../Images/bg.png";
-
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure();
 function Signup(){
 
     const [name, setName] = useState("");
@@ -11,32 +12,42 @@ function Signup(){
     const [password , setPassword] = useState("");
     const [confirmPassword , setConfirmPassword] = useState("");
     const [phone_no, setPhoneNo] = useState("");
-
+    let navigate = useNavigate ();
 
     function registerUser(event) {
 
         event.preventDefault();
           
-        axios.post('http://localhost:7000/api/register', {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: {
+        fetch('http://localhost:7000/api/register', {
+            method: "POST",
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify({
                 'customer_name': name,
                 'customer_email': email,
                 'customer_phone_no': phone_no,
                 'customer_city': 'Nashik',
                 'customer_state': 'Maharashtra',
                 'customer_password': password 
-            }
+            })
         })
-        .then(res => {
+        .then(res => res.json())
+        .then(data => {
 
-            console.log("User registered Successfully : ", JSON.stringify(res.data))
-            return res.data;
+
+            if(data.error !== undefined) {
+
+                toast.warning("Check entered Info");
+                return;
+            }
+
+            toast.success("You have registered Successfully!");
+            navigate('/login');
         })
         .catch(err => {
-            console.log("Something went wrong while registration \n Error : " + err)
+            console.log("Something went wrong while registration \n Error : " + JSON.stringify(err))
         });
 
 
@@ -72,9 +83,7 @@ function Signup(){
 <div class="container-fluid">
     <div class="row no-gutter">
        
-        <div class="col-md-6 d-none d-md-flex">
-        <img id="k1" src={img10}  alt=""/>
-            </div>
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
         
         <div class="col-md-6 bg-light">
             <div class="login d-flex align-items-center py-5">

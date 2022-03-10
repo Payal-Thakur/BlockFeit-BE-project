@@ -1,16 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const {findCustomerByEmail, customerProfile, addReport} = require("../controllers/customer");
+const {findCustomerByEmail, customerProfile, addReport, findProfileByPublicKey} = require("../controllers/customer");
 const { isSignedIn, isTokenPresent, fieldValidator } = require("../controllers/authentication");
 const { check } = require("express-validator");
+const { getCustomerByDetailsBCN} = require("../contract-controllers/contractUtilities")
 
 
 
-router.get('/customerprofile', [
-
-    check("email", "Invalid customer email").trim().isEmail(),
-    ],
-    fieldValidator,
+router.get('/customerprofile',
     isTokenPresent,
     isSignedIn,
     findCustomerByEmail,
@@ -27,6 +24,7 @@ router.post('/reportproduct', [
     fieldValidator, 
     addReport
 );
+
 
 
 module.exports = router;

@@ -104,9 +104,6 @@ contract BlockFeit {
         string memory _email,
         string memory _location
     ) public {
-        Retailer memory _tempRetailer;
-        //Product memory product;
-
         /*
     struct Retailer {
         string id;
@@ -121,20 +118,16 @@ contract BlockFeit {
     }
 
         */
-<<<<<<< HEAD
-        /*
-        _tempRetailer.id = _id;
-=======
-
-        /*_tempRetailer.id = _id;
->>>>>>> 2d70e22761e29f7fb5d8c5e0adb9f42bbe057a03
-        _tempRetailer.name = _name;
-        _tempRetailer.phone_no = _phone_no;
-        _tempRetailer.email = _email;
-        _tempRetailer.location = _location;
-        _tempRetailer.present = true;
-        _tempRetailer.sold = 0;
-        retailers[_id] = _tempRetailer;*/
+        tempRetailer.id = _id;
+        tempRetailer.name = _name;
+        tempRetailer.phone_no = _phone_no;
+        tempRetailer.email = _email;
+        tempRetailer.location = _location;
+        tempRetailer.remaining = 0;
+        tempRetailer.present = true;
+        delete tempRetailer.available;
+        tempRetailer.sold = 0;
+        retailers[_id] = tempRetailer;
     }
 
     /*
@@ -316,10 +309,28 @@ contract BlockFeit {
         return (customers[_customer_id].purchesed.length);
     }
 
+    function getCustomerDetail(string memory _customer_id)
+        public
+        view
+        returns (
+            string memory,
+            string memory,
+            string memory
+        )
+    {
+        return (
+            customers[_customer_id].name,
+            customers[_customer_id].phone_no,
+            customers[_customer_id].email
+        );
+    }
+
     /*
         Function name : getManufacturerCount
         @params :none
         returns how many products availabe to manufacturer
+
+        
     */
     function getManufacturerCount() public view returns (uint256) {
         return (total_manufacturered - indx);

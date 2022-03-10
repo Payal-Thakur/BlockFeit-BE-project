@@ -8,9 +8,9 @@ const {  addCustomerBCN } = require("../contract-controllers/contractUtilities")
 
 router.post('/login',[
 
-        check("username", "Invalid username").trim().isEmail(),
+        check("email", "Invalid username/Email").trim().isEmail(),
         check("password", "Password should be at least 5 chars").isLength({ min: 5 }),
-        check("type", "Invalid type").isIn(['customer', 'vendor', 'manufacturer'])
+        check("type", "Invalid User type").isIn(['customer', 'vendor', 'manufacturer', "Customer"])
     ],
     fieldValidator,
     login
@@ -25,8 +25,7 @@ router.post('/register',[
         check("customer_state", "Invalid state name").isLength({min: 2}),
         check("customer_password", "Password should be at least 6 chars").isLength({ min : 5})
     ],
-    fieldValidator,
-    findCustomerByEmail,
+    
     registerCustomer,
     addCustomerBCN
 

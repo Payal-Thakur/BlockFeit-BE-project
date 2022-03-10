@@ -1,36 +1,87 @@
-import React  from "react";
+import axios from "axios";
+import { json } from "body-parser";
+import React, {useEffect, useState}  from "react";
 import '../../style/Cprofile.css';
 
 
-function Cprofile()
-{
+
+function Cprofile() {
+
+	let localUser = JSON.parse(localStorage.getItem('blockFeit'));
+	let localToken = JSON.parse(localStorage.getItem('blockFeitToken'));
+	let [user, setUser] = useState(localUser)
+
+	async function fetchUser() {
+
+	
+
+
+		console.log(localUser);
+		console.log(localToken);
+
+		await fetch(`http://localhost:7000/api/customerprofile?email=${localUser.customer_email}`, {
+			method: "GET",
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+				'Authorization' : `Bearer ${localToken}`
+              }
+
+        })
+        .then(res => res.json())
+        .then(data => {  console.log(JSON.stringify(data)); setUser(data.user) })
+		.catch(error => {
+			console.log("Something went wrong while getting profile " + JSON.stringify(error))
+		});
+
+
+
+	}
+
+	useEffect( () => {
+
+		fetchUser();
+	}, [])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
- <div> 
 
-
-<div class="wrapper">
-    <div class="navbar">
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid" >
-        <a class="navbar-brand" > Blockfeit</a>
-          <form class="d-flex " >
-        
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            
-            <div class="col-6 col-md-4 sign-out-wrapper clearfix">
-            <a href="/Login" class="sign-out pull-right">
-            <i class="fa fa-sign-out"></i>
-    <span>Log Out</span>
-    
-  </a>
-</div>
-          </form>
-        </div>
-      </nav>
-
-    </div> 
-   </div> 
+ 	<div> 
+		<div class="wrapper">
+			<div class="navbar">
+				<nav class="navbar navbar-light bg-light">
+					<div class="container-fluid" >
+						<a class="navbar-brand" > Blockfeit</a>
+						<form class="d-flex " >
+						
+							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+							<button class="btn btn-outline-success" type="submit">Search</button>
+							
+							<div class="col-6 col-md-4 sign-out-wrapper clearfix">
+								<a href="/Login" class="sign-out pull-right">
+									<i class="fa fa-sign-out"></i>
+									<span>Log Out</span>
+						
+								</a>
+							</div>
+						</form>
+					</div>
+				</nav>
+    		</div> 
+   		</div> 
 
 
 
@@ -50,14 +101,14 @@ function Cprofile()
        </div>
        <br></br>
 
-       <h1> Chandu Shinde</h1> 
-       <h4> Customer</h4>
+       <h1></h1> 
+       <h4>{user.customer_name}</h4>
        <br></br>
 
-       <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i><span class="nav-text">Nashik,Mah</span><br></br>
-       <i class="fa fa-envelope fa-2x" aria-hidden="true"></i><span class="nav-text">abc@gmail.com</span><br></br>
-       <i class="fa fa-phone fa-2x" aria-hidden="true"></i><span class="nav-text">+91 9564127836</span><br></br>
-       <i class="fa fa-lock fa-2x" aria-hidden="true"></i> <span class="nav-text">12351</span> <i class="fa fa-eye-slash fa-2x float-right" aria-hidden="true"></i> <br></br>
+       <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i><span class="nav-text">{`${user.customer_city}, ${user.customer_state}`}</span><br></br>
+       <i class="fa fa-envelope fa-2x" aria-hidden="true"></i><span class="nav-text">{user.customer_email}</span><br></br>
+       <i class="fa fa-phone fa-2x" aria-hidden="true"></i><span class="nav-text">{`+91 ${user.customer_phone_no}`}</span><br></br>
+       <i class="fa fa-lock fa-2x" aria-hidden="true"></i> <span class="nav-text">{user.customer_password}</span> <i class="fa fa-eye-slash fa-2x float-right" aria-hidden="true"></i> <br></br>
 
         <br></br>
         <br></br>        
@@ -78,7 +129,12 @@ function Cprofile()
  <div class="form-group row">
               <label class="col-sm-2 control-label" for="id1"><b>Public Key</b></label>
               <div class="col-sm-10">
-                 <input class="form-control" type="text" id="id1" placeholder=" Public key " />
+                 <input 
+				 class="form-control" 
+				 type="text"
+				  id="id1" 
+				  placeholder=" Public key "
+				  value={ user.customer_public_key} />
 
                  <div class="adjust1">
                     
@@ -94,7 +150,12 @@ function Cprofile()
               <label class="col-sm-2 control-label" for="id2"><b>Private Key</b></label>
               <div class="col-sm-10">
                  
-                  <input class="form-control" type="text" id="id2" placeholder="Private Key " />
+                  <input 
+				  	class="form-control" 
+					type="text" id="id2" 
+					placeholder="Private Key"
+					value={ user.customer_private_key}
+					/>
               
                   
                   <div class="adjust1">

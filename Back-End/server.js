@@ -13,7 +13,7 @@ const customerRoutes = require("./routes/customer");
 const productRoutes = require("./routes/product");
 const vendorRoutes = require("./routes/vendor");
 const manufacturerRoutes = require("./routes/manufacturer");
-
+const contactUsRoute = require("./routes/contactUs")
 
 // middlewares
 app.use(bodyParser.urlencoded({ extended : true }));
@@ -30,6 +30,8 @@ app.use("/api", customerRoutes);
 app.use("/api", productRoutes);
 app.use("/api", vendorRoutes);
 app.use("/api", manufacturerRoutes);
+app.use("/api", contactUsRoute);
+
 
 
 

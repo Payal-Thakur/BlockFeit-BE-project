@@ -3,7 +3,9 @@ const { userQueries } = require("../utilities/queries")
 
 const findCustomerByEmail = (req, res, next) => {
 
-    const email = req.body.email;
+
+
+    const email = req.body.email !== undefined ? req.body.email : req.query.email;
     const query = userQueries.getCustomerUsingEmail;
     mysqlConnection.query(query, [email], (err, result, fields) => {
 
@@ -79,8 +81,9 @@ const addReport = (req, res) => {
 
                 });
         });
-
 }
+
+
 
 
 

@@ -12,9 +12,9 @@ const { json } = require('body-parser');
 // logger
 const logger = (msg) => console.log(msg);
 
-const fieldValidator = (req, res, next) => {
+const fieldValidator = async (req, res, next) => {
 
-    const errors = validationResult(req);
+    const errors = await validationResult(req);
 
     if(!errors.isEmpty()) {
 
@@ -30,7 +30,7 @@ const fieldValidator = (req, res, next) => {
 const login = (req, res) => {
 
 
-    const email = req.body.username;
+    const email = req.body.email;
     const query = userQueries.getCustomerUsingEmail;
 
     mysqlConnection.query(query, [email], (err, result, fields) => {
@@ -96,8 +96,7 @@ const signOut = (req, res) => {
 const registerCustomer = (req, res, next) => {
 
 
-
-    // console.log("hittig reg Router" + req.body)
+    console.log(JSON.stringify(req.body))
     if(req.user) {
 
         return res.status(400).json({
@@ -129,7 +128,7 @@ const registerCustomer = (req, res, next) => {
         customer_privateKey } = req;
 
     
-    console.log(`Private key : ${customer_privateKey}, Public key : ${customer_publicKey}`)
+    console.log(`DB : Level : Private key : ${customer_privateKey}, Public key : ${customer_publicKey}`)
 
     mysqlConnection.query(query, [
         customer_privateKey, 
@@ -163,6 +162,7 @@ const registerCustomer = (req, res, next) => {
             }
 
             next();
+
         });
 }
 
