@@ -307,7 +307,8 @@ END
 CREATE TRIGGER update_product_count_on_add
 AFTER INSERT ON product FOR EACH ROW 
 BEGIN
-UPDATE manufacturer SET manufacturer_product_count = manufacturer_product_count+1;
+	UPDATE manufacturer 
+	SET manufacturer_product_count = manufacturer_product_count+1;
 END
 
 
@@ -388,21 +389,23 @@ where vendor_id = ?;
 
 
 
-CREATE PROCEDURE sell_product_to_vendor(IN _cst_id varchar(30), IN _v_id integer)
+CREATE PROCEDURE sell_product_to_vendor(IN _quantity integer, IN _v_id integer)
 BEGIN
 	
-	UPDATE customer
-	SET customer_purchesed_count = customer_purchesed_count+1
-	WHERE customer_public_key = _cst_id;
-
 	UPDATE vendor
-	SET vendor_quantity_sold = vendor_quantity_sold + 1,
-		vendor_quantity_available = vendor_quantity_available - 1
+	SET vendor_quantity_requested = vendor_quantity_requested - _quantity,
+		vendor_quantity_available = vendor_quantity_available + _quantity
 	where vendor_id = _v_id;
 END
 
 
 
 
+CREATE TABLE contact (
 
+	c_id integer primary key AUTO_INCREMENT,
+	name varchar(50) not NULL,
+	email varchar(50) not NULL,
+	details varchar(500) not NULL
+);
 

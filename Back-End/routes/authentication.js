@@ -25,15 +25,10 @@ router.post('/register',[
         check("customer_state", "Invalid state name").isLength({min: 2}),
         check("customer_password", "Password should be at least 6 chars").isLength({ min : 5})
     ],
-    
+    fieldValidator,
     registerCustomer,
     addCustomerBCN
-
 );
 
 router.post('/signout', signOut)
-
-
-
-
 module.exports = router;

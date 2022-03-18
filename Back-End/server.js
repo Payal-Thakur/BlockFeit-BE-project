@@ -6,7 +6,6 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.LOCALHOST_SERVER_PORT || 7000;
 
-
 // export routes
 const authenticationRoutes = require("./routes/authentication")
 const customerRoutes = require("./routes/customer");
@@ -21,8 +20,6 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
-
-
 
 // routes
 app.use("/api", authenticationRoutes);

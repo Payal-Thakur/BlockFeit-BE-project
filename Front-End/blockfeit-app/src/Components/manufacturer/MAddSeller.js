@@ -6,7 +6,7 @@ toast.configure();
 function MAddSeller(){
 
     const [sellerList, setSellerList] = useState([]);
-    const [id, setId] = useState('');
+    const [id, setId] = useState("");
     let localToken = JSON.parse(localStorage.getItem('blockFeitToken'));
 
     function getRequestedSellerList(event) {
@@ -131,6 +131,7 @@ function MAddSeller(){
                             id="id2" 
                             placeholder="Enter Seller Public Key"
                             value={id}
+                            required
                             onChange = { e => setId(e.target.value)}
                         />
                     </div>

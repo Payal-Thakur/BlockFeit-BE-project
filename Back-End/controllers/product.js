@@ -56,10 +56,62 @@ const addProduct = (req, res, next) => {
     });
 }
 
+const productHistory = (req, res) => {
+
+    const query = productQueries.productHistory;
+    const id = req.query.product_id.trim();
+
+    console.log("product id : ", id)
+
+    mysqlConnection.query(query, [id], (err, result) => {
+
+        if(!!err) {
+
+            return res.status(400).json({
+
+                message: "Something went wrong getting prouct History",
+                error: err
+            });
+        }
+
+        return res.status(200).json({
+
+            message: "Successfully retrived product history",
+            history: result
+        });
+    });
+}
+
+const userProductHistory = (req, res) => {
+
+    const query = productQueries.userTransaction;
+    const id = req.query.id.trim();
+
+    mysqlConnection.query(query, [id, id], (err, result) => {
+
+        if(!!err) {
+
+            return res.status(400).json({
+
+                message: "Something went wrong getting User History",
+                error: err
+            });
+        }
+
+        return res.status(200).json({
+
+            message: "Successfully retrived User history",
+            history: result
+        });
+    });
+
+}
 
 module.exports = {
 
-    addProduct
+    addProduct,
+    productHistory,
+    userProductHistory
 }
 
 
