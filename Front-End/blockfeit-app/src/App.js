@@ -12,15 +12,13 @@ import Login from "./Components/common/Login";
 import QRcode from "./Components/common/QRcode";
 import Scanned from "./Components/common/Scanned";
 import Signup from "./Components/common/Signup";
+import MyProducts from "./Components/common/MyProducts";
 
 // customer
 import Cprofile from "./Components/customer/Cprofile";
 
 //vendor
-import Vhome from "./Components/vendor/Vhome";
-import Vprofile from "./Components/vendor/Vprofile";
-import Vsell from "./Components/vendor/Vsell";
-import Vtrans from "./Components/vendor/Vtrans";
+import Vendor from "./Components/vendor/Vendor";
 
 //Manufacturers
 
@@ -28,6 +26,7 @@ import MAddProducts from "./Components/manufacturer/MAddProducts";
 import MAddSeller from "./Components/manufacturer/MAddSeller";
 import Mhome from "./Components/manufacturer/Mhome";
 import MSellProducts from "./Components/manufacturer/MSellProducts";
+import Manufacturer from "./Components/manufacturer/Manufacturer";
 
 // other
 import Counter from "./Components/Counter";
@@ -44,6 +43,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
 
+          <Route path="/manufacturer" element={<Manufacturer />} />
           <Route path="/Mhome" element={<Mhome />} />
           <Route path="/MAddSeller" exact element={<MAddSeller />} />
           <Route path="/MAddProducts" element={<MAddProducts />} />
@@ -55,10 +55,9 @@ function App() {
           <Route path="/Cprofile" element={<Cprofile />} />
           <Route path="/Scanned" element={<Scanned />} />
 
-          <Route path="/Vhome" element={<Vhome />} />
-          <Route path="/Vsell" element={<Vsell />} />
-          <Route path="/Vprofile" element={<Vprofile />} />
-          <Route path="/Vtrans" element={<Vtrans />} />
+          <Route path="/vendor" element={<Vendor />} />
+
+          <Route path="/product/myproducts/:owner" element={<MyProducts />} />
 
           <Route path="/Counter" element={<Counter />} />
           <Route path="/Authenticated" element={<Authenticated />} />

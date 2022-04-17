@@ -37,6 +37,7 @@ function Cprofile() {
       user.customer_public_key,
       localToken
     );
+    if (uHistory === undefined) return;
     setTransactionHistory(uHistory.history);
   };
 

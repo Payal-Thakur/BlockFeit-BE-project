@@ -1,62 +1,56 @@
-.col-lg-4
-{
-    height: 650px;
+.col-lg-4 {
+  height: 650px;
 }
 
-.col-lg-8
-{
-    height: 650px;
+.col-lg-8 {
+  height: 650px;
 }
 
-#i1
-{
-    margin-top: 20px;
-    background:transparent;
-    width: 200px;
-    height: 200px;
-    margin-left: 90px;
+#i1 {
+  margin-top: 20px;
+  background: transparent;
+  width: 200px;
+  height: 200px;
+  margin-left: 90px;
 }
-#c1
-{
-    margin-left: 20px;
-   font-weight: bold;
-   font-style: normal;
+#c1 {
+  margin-left: 20px;
+  font-weight: bold;
+  font-style: normal;
 }
-#h1
-{
-    margin-left: 250px;
-    color: black;
+#h1 {
+  margin-left: 250px;
+  color: black;
 }
-
 
 .wrapper nav {
-    width: 100%;
-    margin: 0 auto;
-  }
-  
-  .logo {
-    width: 50%;
-  }
-  
-  .sign-out-wrapper {
-    margin-right: 1em;
-  }
-  
-  .sign-out {
-    color: black;
-    outline: none;
-    text-decoration: none;
-    transition: all 0.1s;
-  }
-  
-  .sign-out:focus,
-  .sign-out:hover,
-  .sign-out:active {
-    color: black;
-    background-color: rgb(49, 22, 202);
-    text-decoration: none;
-  }
-  
-  .sign-out > span {
-    margin: 0.5em;
-  }
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 50%;
+}
+
+.sign-out-wrapper {
+  margin-right: 1em;
+}
+
+.sign-out {
+  color: black;
+  outline: none;
+  text-decoration: none;
+  transition: all 0.1s;
+}
+
+.sign-out:focus,
+.sign-out:hover,
+.sign-out:active {
+  color: black;
+  background-color: rgb(49, 22, 202);
+  text-decoration: none;
+}
+
+.sign-out > span {
+  margin: 0.5em;
+}

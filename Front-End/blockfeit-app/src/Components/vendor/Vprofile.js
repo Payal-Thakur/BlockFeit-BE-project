@@ -1,175 +1,111 @@
-import React  from "react";
-import '../../style/Vprofile.css';
+import React from "react";
+import "../../style/Vprofile.css";
 
+function Vprofile() {
+  return (
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 shadow-sm px-4">
+            <i id="l2" class="fa fa-user fa-2x" aria-hidden="true"></i>
+            <div class="box"></div>
+            <br></br>
+            <h1> Chandrakant Shinde</h1>
+            <h4> Vendor</h4>
+            <br></br>
+            <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+            <span class="nav-text">Nashik,Maharashtra</span>
+            <br></br>
+            <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+            <span class="nav-text">abc@gmail.com</span>
+            <br></br>
+            <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+            <span class="nav-text">+91 9564127836</span>
+            <br></br>
+            <i class="fa fa-lock fa-2x" aria-hidden="true"></i>{" "}
+            <span class="nav-text">12351</span>{" "}
+            <i class="fa fa-eye-slash fa-2x float-right" aria-hidden="true"></i>{" "}
+            <br></br>
+            <br></br>
+            <br></br>
+          </div>
 
-function Vprofile()
-{
-    return (
- <div> 
-
-<div class="wrapper">
-    <div class="navbar">
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid" >
-        <a class="navbar-brand" > Blockfeit</a>
-          <form class="d-flex " >
-        
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            
-            <div class="col-6 col-md-4 sign-out-wrapper clearfix">
-            <a href="/Login" class="sign-out pull-right">
-            <i class="fa fa-sign-out"></i>
-    <span>Log Out</span>
-    
-  </a>
-</div>
-          </form>
-        </div>
-      </nav>
-
-    </div> 
-   </div> 
-
-
-
-
-
-
-   <div class="wrapper">
-    <div class="sidebar">
-
-    <a  href="/Vhome">Home</a>
-<a href="/Signup">Add Customer</a>
-<a href="/Vsell">Sell Product</a>
-<a class="active" href="/Vprofile">Profile</a>
-<a href="/Vtrans">Ownership</a>
- </div> 
-   </div>
-
-
-
-
-
-        <div class="container">
-  <div class="row">
-    <div class="col-lg-3 shadow-sm px-4">
-
-            
-      <i  id="l2" class="fa fa-user fa-2x" aria-hidden="true"></i>
-      
-      <div class="box">
-       </div>
-       <br></br>
-
-       <h1> Chandrakant Shinde</h1> 
-       <h4> Vendor</h4>
-       <br></br>
-
-       <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i><span class="nav-text">Nashik,Maharashtra</span><br></br>
-       <i class="fa fa-envelope fa-2x" aria-hidden="true"></i><span class="nav-text">abc@gmail.com</span><br></br>
-       <i class="fa fa-phone fa-2x" aria-hidden="true"></i><span class="nav-text">+91 9564127836</span><br></br>
-       <i class="fa fa-lock fa-2x" aria-hidden="true"></i> <span class="nav-text">12351</span> <i class="fa fa-eye-slash fa-2x float-right" aria-hidden="true"></i> <br></br>
-
-        <br></br>
-        <br></br>        
-
-       
-
-    </div>
-
-    <div class="col-lg-8 shadow-sm px-4  ">
-       
-    
-  
-    <div class ="wrapper-key">
- 
- <i class="fa fa-key  fa-2x" aria-hidden="true"> Keys</i>
- <hr></hr>
- <div class="form-group row">
-              <label class="col-sm-2 control-label" for="id1"><b>Public Key</b></label>
-              <div class="col-sm-10">
-                 <input class="form-control" type="text" id="id1" placeholder=" Public key " />
-
-                 <div class="adjust1">
-                    
-                 <i class="fa fa-eye" aria-hidden="true"  ></i>
-                     </div>
-                 
-              
-                  
-   </div>
-               
-       </div>
+          <div class="col-lg-8 shadow-sm px-4  ">
+            <div class="wrapper-key">
+              <i class="fa fa-key  fa-2x" aria-hidden="true">
+                {" "}
+                Keys
+              </i>
+              <hr></hr>
               <div class="form-group row">
-              <label class="col-sm-2 control-label" for="id2"><b>Private Key</b></label>
-              <div class="col-sm-10">
-                 
-                  <input class="form-control" type="text" id="id2" placeholder="Private Key " />
-              
-                  
+                <label class="col-sm-2 control-label" for="id1">
+                  <b>Public Key</b>
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="id1"
+                    placeholder=" Public key "
+                  />
+
                   <div class="adjust1">
-                    
-                    <i class="fa fa-eye" aria-hidden="true"  ></i>
-                        </div>
-                    
-              
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </div>
+                </div>
               </div>
+              <div class="form-group row">
+                <label class="col-sm-2 control-label" for="id2">
+                  <b>Private Key</b>
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="id2"
+                    placeholder="Private Key "
+                  />
+
+                  <div class="adjust1">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </div>
+                </div>
               </div>
- </div>
-    
-  
+            </div>
+          </div>
+        </div>
+
+        <div class="wrapper-transcation1">
+          <div class="tab1">
+            <i class="fa fa-bars fa-2x"></i>
+            <span class="nav-text3"> My Sold Product</span>
+          </div>
+          <br></br>
+
+          <table class="align">
+            <thead>
+              <tr>
+                <th>Product No</th>
+                <th>Transaction Id</th>
+                <th>Amount</th>
+                <th>Customer</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="t1">
+                <td> 1</td>
+                <td> 45</td>
+                <td> 550</td>
+                <td> ABC</td>
+                <td> Nashik</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-   
-  </div>
-
-  
-
-  <div class ="wrapper-transcation1">
-
-  <div class="tab1"> 
-
-<i class="fa fa-bars fa-2x"></i><span class="nav-text3"> My Sold Product</span>
-   </div>
-   <br></br>
-            
-     
-  <table class="align">
-             <thead>
-                 <tr>
-                     <th>Product No</th>
-                     <th>Transaction Id</th>
-                     <th>Amount</th>
-                     <th>Customer</th>
-                     <th>Location</th>
-
-                 </tr>
-             </thead>
-             <tbody>
-                 <tr id="t1">
-                     <td> 1</td>
-                     <td> 45</td>
-                     <td> 550</td>
-                     <td> ABC</td>
-                     <td> Nashik</td>
-                 </tr>
-             </tbody>
-         </table>
-  </div>
-   
-</div>
-
-
-
-
-
-
-
-
-
-</div>
-        
-    );
+  );
 }
 
 export default Vprofile;

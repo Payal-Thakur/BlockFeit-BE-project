@@ -12,11 +12,13 @@ import QRCode from "qrcode";
 import "../../style/Scanned.css";
 import QrReader from "react-qr-reader";
 
+import ProductHistory from "../product/ProductHistory";
+
 function Scanned() {
   const [text, setText] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [scanResultFile, setScanResultFile] = useState("");
-  const [scanResultWebCam, setScanResultWebCam] = useState("");
+  const [scanResultWebCam, setScanResultWebCam] = useState("Reading.......");
   const classes = useStyles();
   const qrRef = useRef(null);
 
@@ -53,7 +55,15 @@ function Scanned() {
         <h2 className={classes.title}>Scan QR Code</h2>
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
+            <Grid
+              item
+              xl={4}
+              lg={4}
+              md={6}
+              sm={12}
+              xs={12}
+              style={{ border: "10px solid green" }}
+            >
               <h3>Qr Code Scan by Web Cam</h3>
               <QrReader
                 delay={300}
@@ -63,6 +73,7 @@ function Scanned() {
               />
               <h3>Scanned By WebCam Code: {scanResultWebCam}</h3>
             </Grid>
+            <ProductHistory />
           </Grid>
         </CardContent>
       </Card>
