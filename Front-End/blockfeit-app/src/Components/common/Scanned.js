@@ -16,10 +16,11 @@ import ProductHistory from "../product/ProductHistory";
 
 function Scanned() {
   const [text, setText] = useState("");
+  const [reloadHistory, setReloadHistory] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
+  const [inputID, setInputID] = useState("");
   const [scanResultFile, setScanResultFile] = useState("");
-  const [scanResultWebCam, setScanResultWebCam] = useState("Reading.......");
-  const classes = useStyles();
+  const [scanResultWebCam, setScanResultWebCam] = useState("");
   const qrRef = useRef(null);
 
   const generateQrCode = async () => {
@@ -47,56 +48,51 @@ function Scanned() {
   const handleScanWebCam = (result) => {
     if (result) {
       setScanResultWebCam(result);
+      setReloadHistory(!!result);
     }
   };
   return (
-    <Container className={classes.conatiner}>
-      <Card>
-        <h2 className={classes.title}>Scan QR Code</h2>
-        <CardContent>
-          <Grid container spacing={2}>
-            <Grid
-              item
-              xl={4}
-              lg={4}
-              md={6}
-              sm={12}
-              xs={12}
-              style={{ border: "10px solid green" }}
+    <div className="container-flex _p_history_card">
+      <div className="row">
+        <div className="col-3 _qr">
+          <QrReader
+            className="_qr_scanner"
+            delay={300}
+            style={{ width: "70%" }}
+            onError={handleErrorWebCam}
+            onScan={handleScanWebCam}
+          />
+          <text>OR </text>
+          <div>
+            <input
+              placeholder="Enter Product key"
+              value={inputID}
+              onChange={(e) => setInputID(e.target.value)}
+            />
+            <button
+              onClick={(e) => {
+                setScanResultWebCam(inputID);
+                setReloadHistory(!reloadHistory);
+                console.log("Pressing  button : ", inputID);
+              }}
             >
-              <h3>Qr Code Scan by Web Cam</h3>
-              <QrReader
-                delay={300}
-                style={{ width: "100%" }}
-                onError={handleErrorWebCam}
-                onScan={handleScanWebCam}
-              />
+              Submit
+            </button>
+          </div>
+        </div>
+        <div className="col-8" style={{ border: "3px solid green" }}>
+          {!reloadHistory ? (
+            <div>Scan code</div>
+          ) : (
+            <>
               <h3>Scanned By WebCam Code: {scanResultWebCam}</h3>
-            </Grid>
-            <ProductHistory />
-          </Grid>
-        </CardContent>
-      </Card>
-    </Container>
+              <ProductHistory product_id={scanResultWebCam} />
+            </>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
-
-const useStyles = makeStyles((theme) => ({
-  conatiner: {
-    marginTop: 10,
-  },
-  title: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "#3f51b5",
-    color: "#fff",
-    padding: 20,
-  },
-  btn: {
-    marginTop: 10,
-    marginBottom: 20,
-  },
-}));
 
 export default Scanned;

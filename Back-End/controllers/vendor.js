@@ -88,6 +88,29 @@ const getVendorByID = (req, res) => {
   });
 };
 
+const getVendorByEmail = (req, res, next) => {
+  const { email } = req.body;
+  const query = vendorQueries.getVendorByEmail;
+
+  mysqlConnection.query(query, [email], (error, result, fields) => {
+    if (!!error) {
+      return res.status(400).json({
+        message: `Something went while getting Vedor by Email: ${vendor_id}`,
+        error: error,
+      });
+    }
+
+    if (result.length === 0) {
+      return res.status(404).json({
+        message: `No Vedor exist for Given Email id $email}`,
+      });
+    }
+
+    req.vendor = result[0];
+    next();
+  });
+};
+
 const requestProductToManufacturer = (req, res) => {
   const { quantity, vendor_id } = req.body;
   const query = vendorQueries.requestProductToManufacturer;
@@ -137,4 +160,5 @@ module.exports = {
   requestProductToManufacturer,
   sellProductToCustomer,
   getVendorByID,
+  getVendorByEmail,
 };

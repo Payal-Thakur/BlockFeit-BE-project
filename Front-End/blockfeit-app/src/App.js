@@ -12,8 +12,10 @@ import Login from "./Components/common/Login";
 import QRcode from "./Components/common/QRcode";
 import Scanned from "./Components/common/Scanned";
 import Signup from "./Components/common/Signup";
-import MyProducts from "./Components/common/MyProducts";
 
+// products
+import MyProducts from "./Components/product/MyProducts";
+import ProductDetail from "./Components/product/ProductDetail";
 // customer
 import Cprofile from "./Components/customer/Cprofile";
 
@@ -58,6 +60,10 @@ function App() {
           <Route path="/vendor" element={<Vendor />} />
 
           <Route path="/product/myproducts/:owner" element={<MyProducts />} />
+          <Route
+            path="/product/product-detail/:product_id"
+            element={<ProductDetail />}
+          />
 
           <Route path="/Counter" element={<Counter />} />
           <Route path="/Authenticated" element={<Authenticated />} />

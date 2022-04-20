@@ -1,0 +1,15 @@
+body {
+  overflow-x: hidden;
+}
+._p_history_card {
+  border: 3px solid green;
+}
+
+._qr {
+  display: flex;
+  height: 690px;
+  flex-direction: column;
+  /* border: 3px solid green; */
+  align-items: center;
+  justify-content: center;
+}
