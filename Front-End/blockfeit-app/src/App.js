@@ -23,54 +23,58 @@ import Cprofile from "./Components/customer/Cprofile";
 import Vendor from "./Components/vendor/Vendor";
 
 //Manufacturers
-
-import MAddProducts from "./Components/manufacturer/MAddProducts";
-import MAddSeller from "./Components/manufacturer/MAddSeller";
-import Mhome from "./Components/manufacturer/Mhome";
-import MSellProducts from "./Components/manufacturer/MSellProducts";
 import Manufacturer from "./Components/manufacturer/Manufacturer";
 
 // other
 import Counter from "./Components/Counter";
+import VerifyOwnership from "./Components/common/VerifyOwnership";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <div>
-        {/* <Navbar/> */}
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/About" exact element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
+    return (
+        <BrowserRouter>
+            <div>
+                {/* <Navbar/> */}
+                <Routes>
+                    <Route path="/" exact element={<Home />} />
+                    <Route path="/About" exact element={<About />} />
+                    <Route path="/Contact" element={<Contact />} />
+                    <Route path="/Login" element={<Login />} />
+                    <Route path="/Signup" element={<Signup />} />
 
-          <Route path="/manufacturer" element={<Manufacturer />} />
-          <Route path="/Mhome" element={<Mhome />} />
-          <Route path="/MAddSeller" exact element={<MAddSeller />} />
-          <Route path="/MAddProducts" element={<MAddProducts />} />
-          <Route path="/MSellProducts" element={<MSellProducts />} />
-          <Route path="/Mnavbar" element={<Mnavbar />} />
-          <Route path="/Msidebar" element={<Msidebar />} />
-          <Route path="/QRcode" element={<QRcode />} />
+                    <Route
+                        path="/profile/manufacturer"
+                        element={<Manufacturer />}
+                    />
 
-          <Route path="/Cprofile" element={<Cprofile />} />
-          <Route path="/Scanned" element={<Scanned />} />
+                    <Route path="/QRcode" element={<QRcode />} />
 
-          <Route path="/vendor" element={<Vendor />} />
+                    <Route path="/profile/customer" element={<Cprofile />} />
+                    <Route
+                        path="/prodouct/product-history"
+                        element={<Scanned />}
+                    />
 
-          <Route path="/product/myproducts/:owner" element={<MyProducts />} />
-          <Route
-            path="/product/product-detail/:product_id"
-            element={<ProductDetail />}
-          />
+                    <Route path="/profile/vendor" element={<Vendor />} />
+                    <Route
+                        path="/product/verify-ownership"
+                        element={<VerifyOwnership />}
+                    />
 
-          <Route path="/Counter" element={<Counter />} />
-          <Route path="/Authenticated" element={<Authenticated />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
+                    <Route
+                        path="/product/myproducts/:owner"
+                        element={<MyProducts />}
+                    />
+                    <Route
+                        path="/product/product-detail/:product_id"
+                        element={<ProductDetail />}
+                    />
+
+                    <Route path="/Counter" element={<Counter />} />
+                    <Route path="/Authenticated" element={<Authenticated />} />
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

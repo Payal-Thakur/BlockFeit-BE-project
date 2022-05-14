@@ -1,121 +1,121 @@
 * {
-  color: black;
-  letter-spacing: 0cm;
+    color: black;
+    letter-spacing: 0cm;
 }
 
 .view {
-  border: 3px solid red;
+    border: 3px solid red;
 }
 
 ._user_profile {
-  padding: 10px;
-  border-radius: 9px;
-  box-shadow: 0px 1px 3px #888888;
-  height: 550px;
+    padding: 10px;
+    border-radius: 9px;
+    box-shadow: 0px 1px 3px #888888;
+    height: 550px;
 }
 
 ._user_section {
-  margin-top: 30px;
+    margin-top: 90px;
 }
 
 ._cp_image {
-  width: 140px;
-  height: 170px;
-  margin-top: 20px;
-  background: rgb(68, 87, 252);
-  border-radius: 5px;
+    width: 140px;
+    height: 170px;
+    margin-top: 20px;
+    background: rgb(68, 87, 252);
+    border-radius: 5px;
 }
 
 ._customer_name {
-  margin-top: 20px !important;
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: 0cm;
+    margin-top: 20px !important;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0cm;
 }
 
 ._user_profile > i {
-  padding: 10px;
+    padding: 10px;
 }
 
 ._type_text {
-  font-size: 15px;
-  padding: 0px;
-  width: 0px;
-  margin-top: -12px !important;
+    font-size: 15px;
+    padding: 0px;
+    width: 0px;
+    margin-top: -12px !important;
 }
 
 ._user_fields {
-  margin: 12px !important;
-  padding: 10px !important;
+    margin: 12px !important;
+    padding: 10px !important;
 }
 
 ._key_header {
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
 }
 
 ._key_header > svg {
-  width: 50px;
-  height: 100%;
+    width: 50px;
+    height: 100%;
 }
 
 ._user_keys {
-  box-shadow: 0px 1px 3px #888888;
-  padding: 10px;
-  margin-bottom: 30px;
+    box-shadow: 0px 1px 3px #888888;
+    padding: 10px;
+    margin-bottom: 30px;
 }
 
 ._user_public_key {
-  display: flex;
-  height: 70px;
-  align-items: center;
-  justify-content: start;
+    display: flex;
+    height: 70px;
+    align-items: center;
+    justify-content: start;
 }
 
 ._user_public_key_value {
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-  height: 60%;
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
-  background-color: #eceaea;
-  border-radius: 6px;
-  margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 60%;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eceaea;
+    border-radius: 6px;
+    margin-left: 60px;
 }
 ._user_public_key > text {
-  margin-left: 150px;
-  font-weight: bold;
-  font-size: 25px;
+    margin-left: 150px;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 ._user_public_key_value > svg {
-  width: 25px;
-  height: 25px;
-  margin: 10px;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
 }
 
 ._user_transactions {
-  box-shadow: 0px 1px 3px #888888;
-  padding: 15px;
+    box-shadow: 0px 1px 3px #888888;
+    padding: 15px;
 }
 
 ._transaction_header {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  font-size: 20px;
-  font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 ._transaction_header > svg {
-  width: 25px;
-  height: 25px;
-  margin: 10px;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
 }
 
 ._transaction_data > table {
-  text-align: center;
+    text-align: center;
 }

@@ -1,0 +1,35 @@
+._container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+._input_container > * {
+    margin: 10px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+    height: 45px;
+}
+
+._vo_input {
+    padding-left: 25px;
+    background-color: gainsboro;
+    width: 325px;
+}
+
+._vo_button {
+    width: 225px;
+    background-color: rgb(25, 174, 124);
+    padding: 5px;
+    color: white;
+}
+
+._vo_result {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

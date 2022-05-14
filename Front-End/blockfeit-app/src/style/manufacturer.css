@@ -1,28 +1,33 @@
 ._m_area {
-  border: 3px solid red;
+    margin-top: 100px;
 }
-
+.manu-area {
+    margin-top: 65px !important;
+}
+.m_content {
+    margin-top: 20px !important;
+}
 ._side_nav_bar {
-  display: flex;
-  height: 600px;
-  flex-direction: column;
-  background-color: rgb(164, 167, 167);
-  font-weight: bold;
-  font-size: 30px;
+    display: flex;
+    height: 600px;
+    flex-direction: column;
+    background-color: rgb(164, 167, 167);
+    font-weight: bold;
+    font-size: 30px;
 }
 
 ._side_nav_bar > img {
-  width: 230px;
-  height: 230px;
-  cursor: pointer;
+    width: 230px;
+    height: 230px;
+    cursor: pointer;
 }
 
 ._side_nav_bar > h6 {
-  cursor: pointer;
-  font-weight: bolder;
+    cursor: pointer;
+    font-weight: bolder;
 }
 ._side_nav_bar > h6:hover {
-  color: white;
+    color: white;
 }
 ._side_nav_bar {
 }

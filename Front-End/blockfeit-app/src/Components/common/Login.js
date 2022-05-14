@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import img10 from "../../Images/bg.png";
 import Header from "./Header";
-
+import TopNavBar from "./TopNavBar";
 toast.configure();
 
 function Login() {
@@ -57,13 +57,14 @@ function Login() {
                     "blockFeitToken",
                     JSON.stringify(res.token)
                 );
+                localStorage.setItem("type", type);
                 toast.success("Logged in successfully");
                 if (type === "manufacturer") {
-                    navigate("/manufacturer");
+                    navigate("/profile/manufacturer");
                 } else if (type === "vendor") {
-                    navigate("/vendor");
+                    navigate("/profile/vendor");
                 } else {
-                    navigate("/CProfile");
+                    navigate("/profile/customer");
                 }
             })
             .catch((err) => {
@@ -76,7 +77,9 @@ function Login() {
 
     return (
         <div>
-            {<Header />}
+            <nav>
+                <TopNavBar />
+            </nav>
             <div className="maincontainer">
                 <div class="container-fluid">
                     <div class="row no-gutter">

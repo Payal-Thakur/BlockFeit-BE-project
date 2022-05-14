@@ -3,162 +3,162 @@ const { vendorQueries } = require("../utilities/queries");
 const { generateKeys } = require("../utilities/keyGeneration");
 
 const vendorRegistration = (req, res) => {
-  const {
-    vendor_name,
-    vendor_email,
-    vendor_mobile_no,
-    vendor_city,
-    vendor_state,
-    vendor_password,
-    vendor_shop_name,
-  } = req.body;
+    const {
+        vendor_name,
+        vendor_email,
+        vendor_mobile_no,
+        vendor_city,
+        vendor_state,
+        vendor_password,
+        vendor_shop_name,
+    } = req.body;
 
-  const { publicKey, privateKey } = generateKeys();
+    const { publicKey, privateKey } = generateKeys();
 
-  const query = vendorQueries.vendorRegistration;
+    const query = vendorQueries.vendorRegistration;
 
-  mysqlConnection.query(
-    query,
-    [
-      privateKey,
-      publicKey,
-      vendor_name,
-      vendor_email,
-      vendor_mobile_no,
-      vendor_city,
-      vendor_state,
-      vendor_password,
-      vendor_shop_name,
-    ],
-    (err, result, fields) => {
-      if (!!err) {
-        return res.status(400).json({
-          msg: "Something went wrong while Registration",
-          err: err,
-        });
-      }
+    mysqlConnection.query(
+        query,
+        [
+            privateKey,
+            publicKey,
+            vendor_name,
+            vendor_email,
+            vendor_mobile_no,
+            vendor_city,
+            vendor_state,
+            vendor_password,
+            vendor_shop_name,
+        ],
+        (err, result, fields) => {
+            if (!!err) {
+                return res.status(400).json({
+                    msg: "Something went wrong while Registration",
+                    err: err,
+                });
+            }
 
-      return res.status(200).json({
-        message: `You have registered successfully for Vendorship.
+            return res.status(200).json({
+                message: `You have registered successfully for Vendorship.
                         soon your Request will be accept by manufacturere. T&C*
                     `,
-        "your Keys": {
-          privateKey: privateKey,
-          publicKey: publicKey,
-        },
-      });
-    }
-  );
+                "your Keys": {
+                    privateKey: privateKey,
+                    publicKey: publicKey,
+                },
+            });
+        }
+    );
 };
 
 const getVendorByVendorID = (req, res, next) => {
-  const vendor_id =
-    req.body.vendor_id === undefined ? req.query.id : req.body.vendor_id;
-  const query = vendorQueries.getVendorById;
+    const vendor_id =
+        req.body.vendor_id === undefined ? req.query.id : req.body.vendor_id;
+    const query = vendorQueries.getVendorById;
 
-  mysqlConnection.query(query, [vendor_id], (error, result, fields) => {
-    if (!!error) {
-      return res.status(400).json({
-        message: `Something went while getting Vedor by ID: ${vendor_id}`,
-        error: error,
-      });
-    }
+    mysqlConnection.query(query, [vendor_id], (error, result, fields) => {
+        if (!!error) {
+            return res.status(400).json({
+                message: `Something went while getting Vedor by ID: ${vendor_id}`,
+                error: error,
+            });
+        }
 
-    if (result.length === 0) {
-      return res.status(404).json({
-        message: `No Vedor exist for Public key ${vendor_id}`,
-      });
-    }
+        if (result.length === 0) {
+            return res.status(404).json({
+                message: `No Vedor exist for Public key ${vendor_id}`,
+            });
+        }
 
-    req.vendor = result[0];
-    next();
-  });
+        req.vendor = result[0];
+        next();
+    });
 };
 
 const getVendorByID = (req, res) => {
-  if (req.vendor === undefined) {
-    return res.status(404).json({
-      message: `No Vedor exist for Public key ${vendor_id}`,
-    });
-  }
+    if (req.vendor === undefined) {
+        return res.status(404).json({
+            message: `No Vedor exist for Public key ${vendor_id}`,
+        });
+    }
 
-  return res.status(400).json({
-    message: "Successfully retrived vendor",
-    vendor: req.vendor,
-  });
+    return res.status(400).json({
+        message: "Successfully retrived vendor",
+        vendor: req.vendor,
+    });
 };
 
 const getVendorByEmail = (req, res, next) => {
-  const { email } = req.body;
-  const query = vendorQueries.getVendorByEmail;
+    const { email } = req.body;
+    const query = vendorQueries.getVendorByEmail;
 
-  mysqlConnection.query(query, [email], (error, result, fields) => {
-    if (!!error) {
-      return res.status(400).json({
-        message: `Something went while getting Vedor by Email: ${vendor_id}`,
-        error: error,
-      });
-    }
+    mysqlConnection.query(query, [email], (error, result, fields) => {
+        if (!!error) {
+            return res.status(400).json({
+                message: `Something went while getting Vedor by Email: ${vendor_id}`,
+                error: error,
+            });
+        }
 
-    if (result.length === 0) {
-      return res.status(404).json({
-        message: `No Vedor exist for Given Email id $email}`,
-      });
-    }
+        if (result.length === 0) {
+            return res.status(404).json({
+                message: `No Vedor exist for Given Email id $email}`,
+            });
+        }
 
-    req.vendor = result[0];
-    next();
-  });
+        req.vendor = result[0];
+        next();
+    });
 };
 
 const requestProductToManufacturer = (req, res) => {
-  const { quantity, vendor_id } = req.body;
-  const query = vendorQueries.requestProductToManufacturer;
+    const { quantity, vendor_id } = req.body;
+    const query = vendorQueries.requestProductToManufacturer;
 
-  mysqlConnection.query(
-    query,
-    [quantity, vendor_id],
-    (error, result, fields) => {
-      if (!!error) {
-        return res.status(400).json({
-          message: `Something went while getting Requesting products vendor id : ${vendor_id}`,
-          error: error,
-        });
-      }
+    mysqlConnection.query(
+        query,
+        [quantity, vendor_id],
+        (error, result, fields) => {
+            if (!!error) {
+                return res.status(400).json({
+                    message: `Something went while getting Requesting products vendor id : ${vendor_id}`,
+                    error: error,
+                });
+            }
 
-      return res.status(200).json({
-        message: `Successfully requested ${quantity} to manifacturer`,
-      });
-    }
-  );
+            return res.status(200).json({
+                message: `Successfully requested ${quantity} to manifacturer`,
+            });
+        }
+    );
 };
 
 const sellProductToCustomer = (req, res, next) => {
-  const { vendor_id, customer_public_key } = req.body;
+    const { vendor_id, customer_public_key } = req.body;
 
-  const query = vendorQueries.sellProductToCustomer;
+    const query = vendorQueries.sellProductToCustomer;
 
-  mysqlConnection.query(
-    query,
-    [vendor_id, customer_public_key],
-    (error, result, field) => {
-      if (!!error) {
-        return res.status(400).json({
-          message: `Something went while getting selling products to customer`,
-          error: error,
-        });
-      }
+    mysqlConnection.query(
+        query,
+        [vendor_id, customer_public_key],
+        (error, result, field) => {
+            if (!!error) {
+                return res.status(400).json({
+                    message: `Something went while selling products to customer`,
+                    error: error,
+                });
+            }
 
-      next();
-    }
-  );
+            next();
+        }
+    );
 };
 
 module.exports = {
-  vendorRegistration,
-  getVendorByVendorID,
-  requestProductToManufacturer,
-  sellProductToCustomer,
-  getVendorByID,
-  getVendorByEmail,
+    vendorRegistration,
+    getVendorByVendorID,
+    requestProductToManufacturer,
+    sellProductToCustomer,
+    getVendorByID,
+    getVendorByEmail,
 };

@@ -19,6 +19,7 @@ const productQueries = {
     productOfOwner: `select * from product where owner_id = ? limit ?`,
 
     sellProduct: ` update product set owner_id = ? where product_id = ?`,
+    productById: `select * from product where product_id = ?`,
     transactionOfProduct: `insert into product_history (
                             product_id, 
                             owner_public_key, 
@@ -26,21 +27,10 @@ const productQueries = {
                             transaction_address,
                             status) values (?,?,?,?,?)`,
     userTransaction: `select * from product_history where buyer_public_key = ? or owner_public_key = ?;`,
+    sellProductToCustomer: `update product set owner_id = ? where product_id = ? and owner_id = ?`,
 };
 
 const vendorQueries = {
-    /*
-        vendor_private_key,
-        vendor_public_key,
-        vendor_name,
-        vendor_email,
-        vendor_mobile_no,
-        vendor_city,
-        vendor_state,
-        vendor_password,
-        vendor_shop_name
-    */
-
     vendorRegistration: `
     
         INSERT INTO vendor_requested(vendor_private_key,

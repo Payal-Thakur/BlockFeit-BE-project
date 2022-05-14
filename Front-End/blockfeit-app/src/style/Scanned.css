@@ -1,15 +1,57 @@
 body {
-  overflow-x: hidden;
-}
-._p_history_card {
-  border: 3px solid green;
+    overflow-x: hidden;
 }
 
 ._qr {
-  display: flex;
-  height: 690px;
-  flex-direction: column;
-  /* border: 3px solid green; */
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    height: 690px;
+    flex-direction: column;
+    /* border: 3px solid green; */
+    align-items: center;
+    justify-content: center;
+}
+
+._p_history_card {
+    margin-top: 90px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+._or {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: aliceblue;
+}
+
+._user_ip_pid {
+    background-color: aliceblue;
+    margin: 10px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+}
+
+._user_button {
+    width: 100px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.__scann_history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+._scann_message {
+    font-weight: 400;
+    padding: 20px;
+    background-color: aliceblue;
+    border-radius: 5px;
 }

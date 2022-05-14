@@ -1,0 +1,9 @@
+._qr_code_con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+._qr_code_con > * {
+    margin-bottom: 20px;
+}

@@ -7,43 +7,53 @@ import MAddSeller from "./MAddSeller";
 import MAddProducts from "./MAddProducts";
 import MSellProducts from "./MSellProducts";
 import Cprofile from "../customer/Cprofile";
-
+import TopNavigation from "../common/TopNavigation";
 function Manufacturer() {
-  let [current, setCurrent] = useState("home");
+    let [current, setCurrent] = useState("home");
 
-  function updateView() {
-    if (current === "home") return <Mhome />;
+    function updateView() {
+        if (current === "home") return <Mhome />;
 
-    if (current === "add seller") return <MAddSeller />;
+        if (current === "add seller") return <MAddSeller />;
 
-    if (current === "add products") return <MAddProducts />;
+        if (current === "add products") return <MAddProducts />;
 
-    if (current === "sell products") return <MSellProducts />;
+        if (current === "sell products") return <MSellProducts />;
 
-    if (current === "profile") return <Cprofile />;
-  }
+        if (current === "profile") return <Cprofile />;
+    }
 
-  function onClick(val) {
-    setCurrent(val);
-  }
+    function onClick(val) {
+        setCurrent(val);
+    }
 
-  return (
-    <div className="container-fluid">
-      <div className="row view">Heading</div>
-      <div className="row">
-        <div className="row _m_area">
-          <div className="col-2 _side_nav_bar">
-            <img className="_b_logo" src={logo} />
-            <h6 onClick={(e) => onClick("home")}>Home</h6>
-            <h6 onClick={(e) => onClick("add seller")}>Add Seller</h6>
-            <h6 onClick={(e) => onClick("add products")}>Add Products</h6>
-            <h6 onClick={(e) => onClick("sell products")}>Sell Products</h6>
-            <h6 onClick={(e) => onClick("profile")}>Profile</h6>
-          </div>
-          <div className="col">{current && updateView()}</div>
+    return (
+        <div className="container-fluid">
+            <div className="row view">
+                <TopNavigation />
+            </div>
+            <div className="row manu-area">
+                <div className="row _m_area">
+                    <div className="col-2 _side_nav_bar">
+                        <img className="_b_logo" src={logo} />
+                        <h6 onClick={(e) => onClick("home")}>Home</h6>
+                        <h6 onClick={(e) => onClick("add seller")}>
+                            Add Seller
+                        </h6>
+                        <h6 onClick={(e) => onClick("add products")}>
+                            Add Products
+                        </h6>
+                        <h6 onClick={(e) => onClick("sell products")}>
+                            Sell Products
+                        </h6>
+                        <h6 onClick={(e) => onClick("profile")}>Profile</h6>
+                    </div>
+                    <div className="col m_content">
+                        {current && updateView()}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 export default Manufacturer;
