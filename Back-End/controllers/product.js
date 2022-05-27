@@ -166,6 +166,9 @@ const sellProduct = (req, res, next) => {
 const sellProductToCustomer = (req, res, next) => {
     const { product_id, owner_id, customer_id } = req.body;
     const query = productQueries.sellProductToCustomer;
+    const query1 = productQueries.sellProductToCustomerReduce;
+
+    mysqlConnection.query(query1, [owner_id], (err, result) => {});
 
     mysqlConnection.query(
         query,

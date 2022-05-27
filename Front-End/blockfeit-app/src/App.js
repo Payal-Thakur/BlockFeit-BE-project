@@ -28,6 +28,7 @@ import Manufacturer from "./Components/manufacturer/Manufacturer";
 // other
 import Counter from "./Components/Counter";
 import VerifyOwnership from "./Components/common/VerifyOwnership";
+import AllVendor from "./Components/manufacturer/AllVendor";
 
 function App() {
     return (
@@ -44,6 +45,10 @@ function App() {
                     <Route
                         path="/profile/manufacturer"
                         element={<Manufacturer />}
+                    />
+                    <Route
+                        path="/manufacturer/vendors"
+                        element={<AllVendor />}
                     />
 
                     <Route path="/QRcode" element={<QRcode />} />

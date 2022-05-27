@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../../style/Cprofile.css";
 import { fetchUserHistory } from "../../API/api";
 import TopNavigation from "../common/TopNavigation";
+import { useNavigate } from "react-router-dom";
 function Cprofile() {
+    let navigate = useNavigate();
     let localUser = JSON.parse(localStorage.getItem("blockFeit"));
     let localToken = JSON.parse(localStorage.getItem("blockFeitToken"));
     let [user, setUser] = useState(localUser);
@@ -40,6 +42,7 @@ function Cprofile() {
         );
         if (uHistory === undefined) return;
         setTransactionHistory(uHistory.history);
+        console.log(uHistory.history);
     };
 
     useEffect(() => {
@@ -89,7 +92,14 @@ function Cprofile() {
                     </div>
                     <div className="col-9">
                         <div className="row">
-                            <div className="_user_keys">
+                            <div
+                                onClick={() => {
+                                    navigate(
+                                        `/product/myproducts/${user.customer_public_key}`
+                                    );
+                                }}
+                                className="_user_keys"
+                            >
                                 <div className="_key_header">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +127,9 @@ function Cprofile() {
                                     <div className="_user_public_key">
                                         <text>Public Key</text>
                                         <div className="_user_public_key_value">
-                                            <text>XUSFDFSDFDFD</text>
+                                            <text>
+                                                {user.customer_public_key}
+                                            </text>
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="16"
@@ -146,7 +158,9 @@ function Cprofile() {
                                     <div className="_user_public_key">
                                         <text>Private Key</text>
                                         <div className="_user_public_key_value">
-                                            <text>XUSFDFSDFDFD</text>
+                                            <text>
+                                                {user.customer_private_key}
+                                            </text>
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="16"
@@ -201,24 +215,37 @@ function Cprofile() {
                                                 <th>Id</th>
                                                 <th>Buyer Address</th>
                                                 <th>Time Stamp</th>
-                                                <th>Amount</th>
+                                                <th>product Id</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Success</td>
-                                                <td>3</td>
-                                                <td>XYSDDFD</td>
-                                                <td>12-2-200</td>
-                                                <td>234</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Success</td>
-                                                <td>3</td>
-                                                <td>XYSDDFD</td>
-                                                <td>12-2-200</td>
-                                                <td>234</td>
-                                            </tr>
+                                            {transactionHistory.map((trans) => {
+                                                return (
+                                                    <tr>
+                                                        <td>
+                                                            {trans.status === 0
+                                                                ? "Success"
+                                                                : "Fail"}
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                trans.product_history_id
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                trans.buyer_public_key
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {trans.time_stamp}
+                                                        </td>
+                                                        <td>
+                                                            {trans.product_id}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
                                         </tbody>
                                     </table>
                                 </div>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../../style/Vsell.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Vsell() {
     let localUser = JSON.parse(localStorage.getItem("blockFeit"));
@@ -7,6 +9,31 @@ function Vsell() {
     let [privateKey, setPrivateKey] = useState(localUser.vendor_private_key);
     let [customerPublicKey, setCustomerPublicKey] = useState("");
     let [productID, setProductID] = useState("");
+
+    async function sellProductToCust(event) {
+        await fetch("http://localhost:7000/api/sell-product-to-customer", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                owner_id: publicKey,
+                product_id: productID,
+                owner_id_private_key: privateKey,
+                customer_id: customerPublicKey,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                //alert(JSON.stringify(data));
+                toast.success("Sold successfully");
+            })
+            .catch((err) => {
+                // toast.success("fail to  sell");
+                // alert(JSON.stringify(err));
+            });
+    }
 
     return (
         <div>
@@ -86,7 +113,11 @@ function Vsell() {
                             </div>
 
                             <div class="container">
-                                <button type="button" class="btn btn-success">
+                                <button
+                                    onClick={sellProductToCust}
+                                    type="button"
+                                    class="btn btn-success"
+                                >
                                     Sell Product
                                 </button>
                             </div>

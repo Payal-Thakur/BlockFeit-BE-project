@@ -53,6 +53,7 @@ const vendorQueries = {
                                     where vendor_id = ?;`,
 
     sellProductToCustomer: `call UPDATE_VENDOR_PRODUCT_STATUS(?, ?)`,
+    sellProductToCustomerReduce: `update vendor set vendor_quantity_available = vendor_quantity_available-1 where vendor_public_key = ?`,
 };
 
 const manufacturerQueries = {

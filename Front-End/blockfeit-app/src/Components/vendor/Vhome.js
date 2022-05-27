@@ -4,8 +4,10 @@ import "../../style/Mhome.css";
 import { fetchUserHistory } from "../../API/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function Vhome() {
+    let navigate = useNavigate();
     let localUser = JSON.parse(localStorage.getItem("blockFeit"));
     let localToken = JSON.parse(localStorage.getItem("blockFeitToken"));
     let [user, setUser] = useState(localUser);
@@ -81,7 +83,14 @@ function Vhome() {
         <div className="container">
             <div className="row">
                 <div className="col _m_stats">
-                    <div className="_m_stat_properties">
+                    <div
+                        className="_m_stat_properties"
+                        onClick={() => {
+                            navigate(
+                                `/product/myproducts/${localUser.vendor_public_key}`
+                            );
+                        }}
+                    >
                         <span>{vendor.vendor_quantity_available}</span>
                         <span>Remaning Products</span>
                     </div>

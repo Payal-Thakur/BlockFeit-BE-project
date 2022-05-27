@@ -3,6 +3,7 @@ const { mysqlConnection } = require("../database-connection/mysqlConfig");
 const { manufacturerQueries, vendorQueries } = require("../utilities/queries");
 const jwt = require("jsonwebtoken");
 const expressJWT = require("express-jwt");
+const { json } = require("express/lib/response");
 const requestedVendor = (req, res) => {
     const query = manufacturerQueries.getAllRequestedVendors;
 
@@ -46,15 +47,19 @@ const getAllReports = (req, res) => {
 const approveVendorRequest = (req, res, next) => {
     const { vendor_id } = req.body;
     const query = vendorQueries.approveVendor;
+    console.log("GEEERR");
 
     mysqlConnection.query(query, [vendor_id], (error, result, fields) => {
         if (!!error) {
             return res.status(400).json({
-                message: `Something went while approving Vedor, Vendor ID${vendor_public_key}`,
+                message: `Something went while approving Vedor, Vendor ID${vendor_id}`,
                 error: error,
             });
         }
-        next();
+
+        return res.status(200).json({
+            msg: "Added Successfully",
+        });
     });
 };
 
